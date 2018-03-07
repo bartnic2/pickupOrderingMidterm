@@ -44,6 +44,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//login attempt
+app.get('/login/:id'. (req, res) => {
+  req.session.user_id = req.params.id;
+  res.redirect('/');
+})
+
+ 
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
