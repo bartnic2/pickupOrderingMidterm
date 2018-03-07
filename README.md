@@ -38,7 +38,10 @@ User wants to be able to order multiple food items and/or drinks, and know how m
 - User: Name, phonenumber, email
 - Food: Name, size, price, description, URL to image
 - Drinks: Name, size, category, price, description, URL to image
+- OrderFood: food_id (FK), quantity_item, total price
+- OrderDrinks: drink_id (FK), quantity_item, total price
 
+Quantity_item_food, Quantity_item_drink, food_id, total_price
 
 
 
