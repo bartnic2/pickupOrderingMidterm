@@ -27,3 +27,31 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+
+-----------------------------------------------------
+
+## User stories
+
+User wants to be able to order multiple food items and/or drinks, and know how much time it will take to complete the order
+
+- Need login and registration for user so that website can respond to them (through twilio)
+- User: Name, phonenumber, email
+- Food: Name, size, price, description, URL to image
+- Drinks: Name, size, category, price, description, URL to image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
