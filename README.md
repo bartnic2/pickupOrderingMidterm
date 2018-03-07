@@ -43,6 +43,15 @@ User wants to be able to order multiple food items and/or drinks, and know how m
 
 Quantity_item_food, Quantity_item_drink, food_id, total_price
 
+## Needed functions
+
+1. / (home)
+- Main scrolling picture probably will just be references from a URL
+- Images of all restaurants, name, address
+
+2. rest/:id/dashboard (needs unique ID)
+Renato needs to populate each restaurant page with a list of food items, name, prices, etc. (send back items)
+
 
 
 
