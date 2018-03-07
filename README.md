@@ -45,25 +45,39 @@ Quantity_item_food, Quantity_item_drink, food_id, total_price
 
 ## Needed functions
 
-1. / (home)
+1. /(home)
 - Main scrolling picture probably will just be references from a URL
-- Images of all restaurants, name, address
+- Get restaurant info (all)
+- Will display images of all restaurants, including name, possibly address
 
-2. rest/:id/dashboard (needs unique ID)
-Renato needs to populate each restaurant page with a list of food items, name, prices, etc. (send back items)
+2. Registration
+- Get user list (ensure no conflicts)
+- Add users
 
+3. Login
+- Get user list (ensure no conflicts)
 
+4. Restaurant owner dashboard
+- Get items
+- Get restaurant info
+- Add items
+- Add restaurant info
 
+5. Restaurant user dashboard
+- Get items
+- Get restaurant info
 
+Ordering Form
+- Get items
+- Set lineitems quantity (do this for each item, all tied to a specific order id)
+- Set order time_stamp and total_price once order placed (combine lineitems quantity * items price)
 
+6. Order dashboard
+- Get order, display what was ordered on screen. 
+**Also send a copy to the restaurant owner.**
 
+Once order pickup_time is set, Get order pickup_time
 
-
-
-
-
-
-
-
-
-
+7. Restaurant order dashboard
+- Get order
+- Set order pickup_time
