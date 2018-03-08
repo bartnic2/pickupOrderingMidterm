@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
       table.string('size');
       table.text('description');
     }),
-    knex.schema.createTable('lineItems', function(table){
+    knex.schema.createTable('lineitems', function(table){
       table.increments('id');
       table.integer('customer_id');
       table.foreign('customer_id').references('customer.id');
@@ -25,6 +25,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('customer', function(table){
       table.increments('id');
       table.string('email_address');
+      table.string('address');
       table.string('name');
       table.string('password');
       table.string('phone_number');
@@ -53,6 +54,7 @@ exports.up = function(knex, Promise) {
       table.string('password');
       table.string('phone_number');
       table.string('address');
+      table.text('description');
       table.json('images');
     })
   ])
@@ -64,11 +66,11 @@ exports.down = function(knex, Promise) {
       table.increments();
       table.string('name');
     }),
-    knex.schema.dropTable('items'),
-    knex.schema.dropTable('lineItems'),
-    knex.schema.dropTable('customer'),
-    knex.schema.dropTable('orders'),
-    knex.schema.dropTable('payments'),
-    knex.schema.dropTable('restaurant')
+    knex.raw('DROP TABLE items CASCADE'),
+    knex.raw('DROP TABLE lineitems CASCADE'),
+    knex.raw('DROP TABLE customer CASCADE'),
+    knex.raw('DROP TABLE orders CASCADE'),
+    knex.raw('DROP TABLE payments CASCADE'),
+    knex.raw('DROP TABLE restaurant CASCADE')
   ])
 };
