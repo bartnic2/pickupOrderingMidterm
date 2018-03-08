@@ -7,7 +7,9 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+const methodOverride  = require('method-override')
 const app         = express();
+
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -15,8 +17,17 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const twilio      = require('twilio');
 
+
+
+
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const usersRoutes     = require("./routes/users");
+const homeRoutes      = require("./routes/homepage");
+const menuRoutes      = require("./routes/menu");
+const orderRoutes     = require("./routes/order");
+const registerRoutes  = require("./routes/register");
+const restOrderList   = require("./routes/restaurant-order-list")
+const restDashboard   = require("./routes/restaurant-dashboard")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -25,6 +36,9 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
+//use to replace POSTS with PUT and DELETE
+app.use(methodOverride('_method'));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,21 +50,17 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use(homeRoutes(knex));
+app.use(menuRoutes(knex));
+app.use(orderRoutes(knex));
+app.use(registerRoutes(knex));
+app.use(restOrderList(knex));
+app.use(restDashboard(knex));
 
-// Home page
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
-//login attempt
-app.get('/login/:id'. (req, res) => {
-  req.session.user_id = req.params.id;
-  res.redirect('/');
-})
-
- 
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

@@ -10,39 +10,42 @@ var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from 
 var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
-console.log(authToken)
 var client = new twilio(accountSid, authToken);
 
+
+const textMessage = {
 // to user
-function notifyOrderPlaced{
-  client.messages.create({
-      body: `Hi user${}, your order for ${}orderlist has been received and will be ready for pickup in ${}minutes, here's the tracking link${}`,
-      to: '+14164522009',  // Text this number
-      from: '+16476997847' // From a valid Twilio number
-  })
-  .then((message) => console.log(message.sid));
+  notifyOrderConfirmed: function (){
+    client.messages.create({
+        body: `Hi , your order for orderlist has been received and will be ready for pickup in minutes, here's the tracking link`,
+        to: '+14164522009',  // Text this users number
+        from: '+16476997847' // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
+  },
+
+  // to user
+  notifyOrderDone: function () {
+    client.messages.create({
+        body: `Hi user, your order of orderlist is ready for pickup`,
+        to: '+14164522009',  // Text this users number
+        from: '+16476997847' // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
+  },
+  //to restaurant
+  notifyRestaurant: function(){
+    client.messages.create({
+        body: `Hi restaurant, an order for orderlist has been placed by user, please let them know when their order will be ready for pickup here link`,
+        to: '+14164522009',  // Text this restaurant number
+        from: '+16476997847' // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
+  }
+
 }
 
-// to user
-function notifyOrderDone{
-  client.messages.create({
-      body: `Hi user${}, your order of ${}orderlist is ready for pickup`,
-      to: '+14164522009',  // Text this number
-      from: '+16476997847' // From a valid Twilio number
-  })
-  .then((message) => console.log(message.sid));
-}
-//to restaurant
-function notifyRestaurant{
-  client.messages.create({
-      body: `Hi restaurant${}, an order for ${}orderlist has been placed by user${}, please let them know when their order will be ready for pickup here link${}`,
-      to: '+14164522009',  // Text this number
-      from: '+16476997847' // From a valid Twilio number
-  })
-  .then((message) => console.log(message.sid));
-}
-
-
+module.exports = textMessage;
 
 
 // curl 'https://api.twilio.com/2010-04-01/Accounts/AC76eb6ee8590a47c08cd0564696b08a95/Messages.json' -X POST \
