@@ -1,4 +1,4 @@
-//Note: Doesn't exactly work when you run twice. But that shouldn't matter long-term.
+//Note: Doesn't exactly work when you run twice (need to debug). But that shouldn't matter long-term since it only needs to be run once.
 
 exports.seed = function(knex, Promise) {
   return Promise.all([
