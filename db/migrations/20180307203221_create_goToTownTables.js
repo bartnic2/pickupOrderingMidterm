@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('users'),
     knex.schema.createTable('items', function(table){
-      table.increments('id');
+      table.increments('id' );
       table.integer('restaurant_id');
       table.foreign('restaurant_id').references('restaurant.id');
       table.string('name');
@@ -40,7 +40,7 @@ exports.up = function(knex, Promise) {
       table.foreign('payments_id').references('payments.id');
       table.string('pickup_time');
       table.decimal('total_price', 6, 2);
-      table.time('time_stamp');
+      table.timestamp('time_stamp').defaultTo(knex.fn.now());
     }),
     knex.schema.createTable('payments', function(table){
       table.increments('id');
@@ -49,8 +49,8 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('restaurant', function(table){
       table.increments('id');
-      table.string('email_address');
       table.string('name');
+      table.string('email_address');
       table.string('password');
       table.string('phone_number');
       table.string('address');
