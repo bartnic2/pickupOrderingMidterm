@@ -1,7 +1,7 @@
 var knex = require('knex')(require('./knexfile').development)
 
 module.exports = {
-  getAllItems: function(restaurant_name){
+  getRestaurantItems: function(restaurant_name){
     knex.select().from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.name','=',restaurant_name).asCallback(function(err, rows){
       if(err){
         return console.error(err);
