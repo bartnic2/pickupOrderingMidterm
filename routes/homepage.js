@@ -1,7 +1,7 @@
 "use strict";
 
 //this is the homepage 
-
+//need from database restaurants address, name, phone number, image path, id
 const express = require('express');
 const router  = express.Router();
 

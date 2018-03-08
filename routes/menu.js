@@ -10,7 +10,8 @@ module.exports = (knex) => {
 
   //restaurant menu page
   //needs html file
-  //need the 
+  //from database needs the restaurant, email, imagepath, address, name, phone number, id
+  //needs everything from items
   router.get('/restaurant/:id/menu', (req, res) => {
   //  req.session.user_id = req.params.id;
     let templateVars = {
@@ -22,6 +23,7 @@ module.exports = (knex) => {
 
     //placing the order you've created
   //redirects to the order page, if we're implementing payment then twilio message after payment, otherwise message should be from here
+  
   router.post('/order/:id', (req, res) => {
   //  req.session.user_id = req.params.id;
   //  req.session.user_id = req.params.userName;
