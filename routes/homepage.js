@@ -8,9 +8,9 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-  let templateVars = {
-  }
-  res.render("index", templateVars);
+    let templateVars = {
+    }
+    res.render("index", templateVars);
   });
 
   return router;

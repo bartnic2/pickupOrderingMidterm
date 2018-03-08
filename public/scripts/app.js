@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   //login attempts from home and menu
     $(() => {
+      event.preventDefault()
       $.ajax({
         method: "POST",
         url: "/login"

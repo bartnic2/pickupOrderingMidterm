@@ -3,6 +3,7 @@ $(document).ready(function() {
 
 //adding a new menu item
     $(() => {
+      event.preventDefault()
       $.ajax({
         method: "POST",
         url: "/restaurant/:id/dashboard/add",
@@ -17,6 +18,7 @@ $(document).ready(function() {
   //removing a menu item from the menu
   //methodoveride to change to delete
     $(() => {
+      event.preventDefault()
       $.ajax({
         method: "POST",
         url: "/restaurant/:id/dashboard/delete",
@@ -30,8 +32,9 @@ $(document).ready(function() {
 
 
 //editing an existing menu item
-//change POST to PUT using mehtod override
+//change POST to PUT using method override
     $(() => {
+      event.preventDefault()
       $.ajax({
         method: "POST",
         url: "/restaurant/:id/dashboard/edit",
