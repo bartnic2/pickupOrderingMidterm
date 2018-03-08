@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $(function() {
-
+//restaurant orderlist
 //may be more efficient to use the sms in the index
-const textMessage = require('../../routes/sms.js')
+const textMessage = require('./twilioFunction.js')
 
 
 

@@ -10,7 +10,7 @@ module.exports = (knex) => {
   router.get("/restaurant/:id/dashboard", (req, res) => {
   let templateVars = {
   }
-  res.render("", templateVars);
+  res.render('../views/dashboard.ejs', templateVars);
   });
 
   return router;

@@ -15,7 +15,7 @@ $(document).ready(function() {
     $(() => {
       event.preventDefault()
       $.ajax({
-        method: "POST",
+        method: "GET",
         url: "/login"
        // success:
       }).done((users) => {
@@ -27,3 +27,4 @@ $(document).ready(function() {
 
   });
 })
+

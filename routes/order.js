@@ -15,7 +15,7 @@ module.exports = (knex) => {
     let templateVars = {
 
     }
-    res.render('', templateVars);
+    res.render('../views/order.ejs', templateVars);
   })
 
   return router;

@@ -1,19 +1,13 @@
 
-
-
-
 var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
 
-var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+var authToken = require('../routes/confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
- let twilio = () => {
-
-//the two user functions can be turned into one
-
-  let notifications = {
+ let twilio = {
+    //the two user functions can be turned into one
   // to user
     notifyOrderConfirmed: function (){
       client.messages.create({

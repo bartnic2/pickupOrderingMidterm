@@ -10,11 +10,11 @@ module.exports = (knex) => {
 
   //restaurants orderlist of incoming orders
   router.get('/restaurant/:id/orderlist', (req, res) => {
-    req.session.user_id = req.params.id;
+    let restaurantId = req.params.id;
     let templateVars = {
       
     }
-    res.render('', templateVars);
+    res.render('../views/orders_list.ejs', templateVars);
   })
 
 

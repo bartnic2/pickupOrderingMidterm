@@ -1,58 +1,52 @@
 //https://www.twilio.com/console/sms/getting-started/build/order-notifications
 //https://www.twilio.com/docs/libraries/node
+"use strict";
 
-//
+
 //twilio number 1 647 699 7847
 
 
+const express = require('express');
+const router  = express();
 var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
 
 var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
+const http              = require('http');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 
-const textMessage = {
-// to user
-  notifyOrderConfirmed: function (){
-    client.messages.create({
-        body: `Hi , your order for orderlist has been received and will be ready for pickup in minutes, here's the tracking link`,
-        to: '+14164522009',  // Text this users number
-        from: '+16476997847' // From a valid Twilio number
-    })
-    .then((message) => console.log(message.sid));
-  },
 
-  // to user
-  notifyOrderDone: function () {
-    client.messages.create({
-        body: `Hi user, your order of orderlist is ready for pickup`,
-        to: '+14164522009',  // Text this users number
-        from: '+16476997847' // From a valid Twilio number
-    })
-    .then((message) => console.log(message.sid));
-  },
-  //to restaurant
-  notifyRestaurant: function(){
-    client.messages.create({
-        body: `Hi restaurant, an order for orderlist has been placed by user, please let them know when their order will be ready for pickup here link`,
-        to: '+14164522009',  // Text this restaurant number
-        from: '+16476997847' // From a valid Twilio number
-    })
-    .then((message) => console.log(message.sid));
-  }
+module.exports = (knex) => {
+
+
+//needs to respond to user if 
+ // reactive response to restaurant
+  router.post('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+
+    
+
+    if (req.body.Body == 'number') {
+      twiml.message('Customer will be by in number minutes');
+    } else if(req.body.Body == 'Cancel') {
+      twiml.message('Order cancelled');
+    } else {
+      twiml.message('No Body param match, Twilio sends this in the request to your server.');
+    }
+
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+  });
+return router
 
 }
 
-module.exports = textMessage;
 
 
-// curl 'https://api.twilio.com/2010-04-01/Accounts/AC76eb6ee8590a47c08cd0564696b08a95/Messages.json' -X POST \
-// --data-urlencode 'To=+14164522009' \
-// --data-urlencode 'From=+16476997847' \
-// --data-urlencode 'Body=hello' \
-// -u AC76eb6ee8590a47c08cd0564696b08a95:[AuthToken]
+
 
 
 

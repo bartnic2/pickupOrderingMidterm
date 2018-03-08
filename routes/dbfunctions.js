@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-var knex = require('knex')(require('./knexfile').development)
 
-module.exports = {
-  getRestaurantItems: function(restaurant_name){
-    knex.select().from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.name','=',restaurant_name).asCallback(function(err, rows){
-      if(err){
-        return console.error(err);
-      }
-      return rows;
-=======
 var knex = require('knex')(require('../knexfile.js').development)
 
 module.exports = {
