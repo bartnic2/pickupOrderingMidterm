@@ -1,14 +1,17 @@
 //When importing a file, you have to use ./
 dbfunctions = require("./dbfunctions.js");
 
-
 //Function 1:
-// dbfunctions.getAllItems().then(function(rows){
+// dbfunctions.getAllRestaurantItems("John Wayne")
+// .then(function(rows){
 //   console.log(rows);
+// })
+// .catch(function(err){
+//   console.log(err);
 // });
 
 //Function 2:
-// dbfunctions.getAllCustomerData("John Wayne")
+// dbfunctions.getRestaurantData("Steak and Fries")
 // .then(function(rows){
 //   console.log(rows);
 // })
@@ -26,7 +29,7 @@ dbfunctions = require("./dbfunctions.js");
 // });
 
 //Function 4:
-// dbfunctions.getRestaurantLoginData("Steak and Fries")
+// dbfunctions.getAllCustomerData("Steak and Fries")
 // .then(function(rows){
 //   console.log(rows);
 // })
@@ -35,19 +38,10 @@ dbfunctions = require("./dbfunctions.js");
 // });
 
 //Function 5:
-// dbfunctions.getRestaurantData("Steak and Fries")
+// dbfunctions.getAllItems("Steak and Fries")
 // .then(function(rows){
 //   console.log(rows);
 // })
 // .catch(function(err){
 //   console.log(err);
 // });
-
-//Function 6:
-dbfunctions.getAllRestaurantItems("Steak and Fries")
-.then(function(rows){
-  console.log(rows);
-})
-.catch(function(err){
-  console.log(err);
-});
