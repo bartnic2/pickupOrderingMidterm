@@ -16,35 +16,25 @@ module.exports = (knex) => {
 
 
     let templateVars = {};
+ 
+    dbData.getRestaurantData(req.params.id).then(function(rows){
+      templateVars.restaurantInfo = rows[0]
+      templateVars.restaurantInfo.id = req.params.id
+    })
 
+  
     dbData.getAllRestaurantItems(req.params.id).then(function(rows){
       for(let i = 0; i < rows.length; i++) { 
 
       let foodInfo = rows[i]
       templateVars[foodInfo.name] = foodInfo
-
-
-
-        // let items = {  
-        //   id: rows[i].id,
-        //   name: rows[i].name,
-        //   category: rows[i].category,
-        //   price: rows[i].price,
-        //   images: rows[i].images,
-        //   size: rows[i].size,
-        //   description: rows[i].description
-        // }
-        // templateVars[items.name] = items
-        console.log(foodInfo)
       }
 
    //   console.log("this is root beer "+templateVars["Root Beer"].description)
       res.render('../views/order.ejs', {info:templateVars});
     })
 
-    // dbData.getRestaurantData().then(function(rows){
-      
-    //  })
+
     // console.log("template vares"+templateVars)
     // console.log("broad root beer" + templateVars["Root Beer"])
     // console.log("this is root beer "+templateVars["Root Beer"].description)
@@ -56,4 +46,3 @@ module.exports = (knex) => {
   return router;
 }
 
- 

@@ -13,9 +13,9 @@ module.exports = {
         })
     })
   },
-  getRestaurantData: function(restaurant_name){
+  getRestaurantData: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'images').from('restaurant').where('restaurant.name','=',restaurant_name)
+      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'images').from('restaurant').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
