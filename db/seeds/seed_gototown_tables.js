@@ -11,11 +11,31 @@ exports.seed = function(knex, Promise) {
     ])
     .then(function(){
       return knex('restaurant').insert(
-        {id: 1, name: "Steak and Fries", email_address: "steaks@gmail.com", password: "cows", address: "1111 Mountain Drive", phone_number: "000-111-2222", images: {'rest_image_1': 'rest_image_1'}, description: "Great food for low, low prices"})
+        {id: 1, name: "Fresh on Spadina", email_address: "info@freshrestaurants.ca", password: "spadina", address: "147 Spadina Ave, Toronto, ON", phone_number: "(416) 599-4442", images: {'id1_image1': 'img/Fresh on Spadina.jpeg'}, description: "A large menu of modern vegetarian & vegan dishes, plus made-to-order juices, in a lively eatery."})
     })
     .then(function(){
       return knex('restaurant').insert(
-        {id: 2, name: 'Real Italian Pizza', email_address: "pizza@gmail.com", password: "pizza", address: "1234 Newark Street", phone_number: "000-111-4444", images: {'rest_image_2': 'rest_image_2'}, description: "Real Pizza made by Real Italians"})
+        {id: 2, name: "Ricarda's Restaurant", email_address: "order@oodora.ca", password: "ricarda", address: "134 Peter St, Toronto, ON", phone_number: "(416) 304-9134", images: {'id2_image1': 'img/Ricarda\'s Restaurant.jpeg'}, description: "Opening early to offer coffee & baked goods, this airy eatery also serves modern Mediterranean fare."})
+    })
+    .then(function(){
+      return knex('restaurant').insert(
+        {id: 3, name: 'Little India Restaurant', email_address: "order@littleindia.ca", password: "littleindia", address: "255 Queen St W, Toronto", phone_number: "(416) 205-9836", images: {'id3_image1': 'img/Little India Restaurant.jpg'}, description: "Compact, family-owned fixture offering familiar Indian dishes & a lunch buffet in a relaxed space."})
+    })
+    .then(function(){
+      return knex('restaurant').insert(
+        {id: 4, name: 'Aroma Fine Indian Cuisine', email_address: "Order@aromafineindiancuisineon.com", password: "fineindian", address: "287 King St W, Toronto", phone_number: "(416) 971-7242", images: {'id4_image1': 'img/Aroma Fine Indian Cuisine.jpeg'}, description: "Upscale, 2nd-storey Indian go-to with all-you-can-eat lunch buffet & mild-to-hot à la carte options."})
+    })
+    .then(function(){
+      return knex('restaurant').insert(
+        {id: 5, name: 'Il Fornello on King', email_address: "Order@ilfornello.com", password: "fornello", address: "214 King St W, Toronto, ON", phone_number: "(416) 977-2855", images: {'id5_image1': 'img/Il Fornello on King.jpeg'}, description: "Pasta & Neapolitan-style pizza from a relaxed eatery that's popular with pre-theatre diners."})
+    })
+    .then(function(){
+      return knex('restaurant').insert(
+        {id: 6, name: 'Planta Burger', email_address: "Order@plantaburger.ca", password: "planta", address: "4 Temperance St, Toronto, ON", phone_number: "(647) 348-7000", images: {'id6_image1': 'img/Planta Burger.jpg'}, description: "Cozy counter serve with a striped decor serving inventive vegan burgers plus sides & milkshakes."})
+    })
+    .then(function(){
+      return knex('restaurant').insert(
+        {id: 7, name: 'Sukhothai', email_address: "order@Sukhothai.ca", password: "sukho", address: "52 Wellington St E, Toronto, ON", phone_number: "(647) 351-4612", images: {'id7_image1': 'img/Sukhothai.jpeg'}, description: "Husband-and-wife owners serve classic Thai fare, from spring rolls to curries, in a casual setting."})
     })
     .then(function(){
       return knex('items').insert(
@@ -23,11 +43,15 @@ exports.seed = function(knex, Promise) {
     })
     .then(function(){
       return knex('items').insert(
-        {id: 2, restaurant_id: 1, name: "Giant steak and fries", category: 'food', price: 15.00, images: {'item2_image': 'image2'}, size: 'large', description: 'Prime-rib steak with barbeque sauce and and helping of spicy fries'})
+        {id: 2, restaurant_id: 1, name: "Cucumber Salad", category: 'food', price: 7.00, images: {'item1_image': 'image1'}, size: 'medium', description: 'This cucumber salad comes fresh from local producers, and contains deluxe ranch dressing'})
     })
     .then(function(){
       return knex('items').insert(
-        {id: 3, restaurant_id: 2, name: "Pepperoni Pizza", category: 'food', price: 7.00, images: {'item1_image': 'image1'}, size: 'medium', description: 'A classic meal, made with deluxe tomato sauce, italian pepperoni, and mozzarella cheese'})
+        {id: 3, restaurant_id: 2, name: "Giant steak and fries", category: 'food', price: 15.00, images: {'item2_image': 'image2'}, size: 'large', description: 'Prime-rib steak with barbeque sauce and and helping of spicy fries'})
+    })
+    .then(function(){
+      return knex('items').insert(
+        {id: 4, restaurant_id: 2, name: "Pepperoni Pizza", category: 'food', price: 7.00, images: {'item1_image': 'image1'}, size: 'medium', description: 'A classic meal, made with deluxe tomato sauce, italian pepperoni, and mozzarella cheese'})
     })
     .then(function(){
       return knex('customer').insert(
