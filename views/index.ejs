@@ -55,19 +55,19 @@
                 <div class="col-8">
 
                       <ul class="list-group">
-          
+
                         <% for (let restaurant in info) {%>
                         <form class="restaurant" id="register" method="GET" action="/restaurant/<%=info[restaurant].id%>/menu">
                         <button class="redirect" type="submit">
                         <li class="media my-4">
-                          <img class="mr-3" src="..." alt="Generic placeholder image">
+                          <img class="mr-3" src='<%=info[restaurant].image%>' alt="Generic placeholder image">
                           <div class="media-body">
                             <h5 class="mt-0 mb-1"> <%= [restaurant] %></h5>
 
                           <%= info[restaurant].description %>
                           </div>
-                        </li>  
-                        </button>            
+                        </li>
+                        </button>
                       </form>
                         <%} %>
 
