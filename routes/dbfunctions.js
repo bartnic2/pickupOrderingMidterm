@@ -1,9 +1,9 @@
 var knex = require('knex')(require('../knexfile.js').development)
 
 module.exports = {
-  getAllRestaurantItems: function(restaurant_name){
+  getAllRestaurantItems: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('items.id', 'items.name', 'category', 'price', 'items.images', 'size', 'items.description').from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.name','=',restaurant_name)
+      knex.select('items.id', 'items.name', 'category', 'price', 'items.images', 'size', 'items.description').from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
@@ -12,9 +12,9 @@ module.exports = {
         })
     })
   },
-  getRestaurantData: function(restaurant_name){
+  getRestaurantData: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'images').from('restaurant').where('restaurant.name','=',restaurant_name)
+      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'images').from('restaurant').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
@@ -23,9 +23,9 @@ module.exports = {
         })
     })
   },
-  getRestaurantLoginData: function(restaurant_name){
+  getRestaurantLoginData: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('email_address', 'password').from('restaurant').where('restaurant.name','=',restaurant_name)
+      knex.select('email_address', 'password').from('restaurant').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
@@ -82,10 +82,11 @@ module.exports = {
     })
   },
   //receiving: customerid, [{itemID, quantity},{itemID2, quantity},...]
-  enterOrderData: function(customerID, restaurantID, orderObject){
+  enterOrderData: function(total, idArray, orderObject){
     return new Promise(function(resolve, reject){
-      knex.insert({customer_id: customerID, restaurant_id: restaurantID
-      })
+      customerID = idArray[0];
+      restaurantID = idArray[1];
+      knex.insert({customer_id: customerID, restaurant_id: restaurantID, total_price: total})
       .returning('id')
       .into('orders')
       .then(function (orderID){
@@ -93,10 +94,21 @@ module.exports = {
           knex.insert({customer_id: customerID, item_id: itemID, order_id: orderID[0], quantity: orderObject[itemID]})
           .into('lineitems')
           .asCallback()
-        }
-      })
+          }
+        })
       .then(function(){
         return resolve("Insertion successful");
+      })
+      .catch(function(err){
+        return reject(err);
+      })
+    });
+  },
+  retrieveOrderData: function(customerID){
+    return new Promise(function(resolve, reject){
+      knex.select().from('orders').where('customer_id', '=', customerID)
+      .then(function(rows){
+        return resolve(rows);
       })
       .catch(function(err){
         return reject(err);
