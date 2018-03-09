@@ -44,8 +44,8 @@
             <div class="container d-flex flex-row">
                 <img src="https://www.saratogarestaurants.com/buzz/wp-content/uploads/sites/60/2016/12/primediningroom.jpg" class="media-object img-thumbnail p-2 ">
                   <div class="media-body p-2">
-                      <h5 class="mt-0 mb-1">RESTAURANT 4</h5>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                      <h5 class="mt-0 mb-1"><%=info.restaurantInfo.name%></h5>
+                      <p><%=info.restaurantInfo.description%></p>
                   </div>
             </div>
         </div>
@@ -60,10 +60,9 @@
 
                       <thead>
                           <tr>
-                              <th>Product</th>
+ 
                               <th>Quantity</th>
                               <th class="text-center">Price</th>
-                              <th class="text-center">Total</th>
                               <th> </th>
                           </tr>
                       </thead>
@@ -81,13 +80,10 @@
                                   </div>
                               </div>
                               </td>
-                              <td class="col-sm-1 col-md-1" style="text-align: center">
-                              <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                              </td>
-                              <td class="col-sm-1 col-md-1 text-center"><strong>      <%= info[foodItem].price %></strong></td>
-                              <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+
+                              <td class="col-sm-1 col-md-1 text-center"><strong><%= info[foodItem].price %></strong></td>
                               <td class="col-sm-1 col-md-1">
-                                <form   action="/restaurant/<%=info.restaurantInfo.id%>/menu/add" method="POST" class="add-button">
+                                <form   action="/restaurant/menu/add" method="POST" class="add-button">
                                   <button  type="submit" class="add-button">
                                       <span class="glyphicon glyphicon-remove"></span>Add
                                   </button>
@@ -141,30 +137,11 @@
                               <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
                               <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
                               <td class="col-sm-1 col-md-1">
-                              <button type="button" class="btn btn-danger">
+                              <button type="button" class="remove-button">
                                   <span class="glyphicon glyphicon-remove"></span> Remove
                               </button></td>
                           </tr>
-                          <tr>
-                            <td class="col-md-6">
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <h5 class="media-heading">Product name</h5>
-
-                                </div>
-                            </div></td>
-                            <td class="col-md-1" style="text-align: center">
-                            <input type="email" class="form-control" id="exampleInputEmail1" value="2">
-                            </td>
-                            <td class="col-md-1 text-center"><strong>$4.99</strong></td>
-                            <td class="col-md-1 text-center"><strong>$9.98</strong></td>
-                            <td class="col-md-1">
-                            <button type="button" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-remove"></span> Remove
-                            </button></td>
-                        </tr>
-
+             
 
 
                         <tr>
