@@ -21,8 +21,8 @@ const twilio            = require('twilio');
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
 const homeRoutes      = require("./routes/homepage");
-const menuRoutes      = require("./routes/menu");
-const orderRoutes     = require("./routes/order");
+const orderRoutes      = require("./routes/order");
+const confirmationRoutes     = require("./routes/confirmation");
 const registerRoutes  = require("./routes/register");
 const restOrderList   = require("./routes/restaurant-order-list")
 const restDashboard   = require("./routes/restaurant-dashboard")
@@ -54,8 +54,8 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use(homeRoutes(knex));
-app.use(menuRoutes(knex));
 app.use(orderRoutes(knex));
+app.use(confirmationRoutes(knex));
 app.use(registerRoutes(knex));
 app.use(restOrderList(knex));
 app.use(restDashboard(knex));

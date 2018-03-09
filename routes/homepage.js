@@ -10,15 +10,20 @@ const dbData = require("./dbfunctions.js")
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-
     let templateVars = {};
 
-  dbData.getAllRestaurantData("Steak and Fries").then(function(rows){
-    let restaurantInfo = rows
-    templateVars = restaurantInfo
+  dbData.getAllRestaurantData().then(function(rows){
+   
+   for(let i = 0; i < rows.length; i++){
+      let restaurantInfo = rows[i]
+      templateVars[restaurantInfo.name] = restaurantInfo
+    }
+    res.render("index", {info:templateVars});
   })
-    res.render("index", templateVars);
+
+
   });
 
   return router;
 }
+
