@@ -4,3 +4,7 @@ public/styles
 *.log
 *.sqlite3
 routes/confidential.js
+../.DS_Store
+../public/.DS_Store
+../public/scripts/.DS_Store
+
