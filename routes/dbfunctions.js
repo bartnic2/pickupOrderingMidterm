@@ -1,3 +1,4 @@
+
 var knex = require('knex')(require('../knexfile.js').development)
 
 module.exports = {
@@ -23,7 +24,21 @@ module.exports = {
         })
     })
   },
-  getRestaurantLoginData: function(restaurant_id){
+    getAllRestaurantData: function(){
+    return new Promise(function(resolve, reject){
+      resolve(knex.select('*').from('restaurant')
+        .then(function(rows){
+          return rows;
+        }))
+        .catch(function(err){
+          console.log(err);
+        })
+      reject(function(err){
+          return err;
+      })
+    })
+  },
+  getRestaurantLoginData: function(restaurant_name){
     return new Promise(function(resolve, reject){
       knex.select('email_address', 'password').from('restaurant').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
@@ -106,7 +121,7 @@ module.exports = {
   },
   retrieveOrderData: function(customerID){
     return new Promise(function(resolve, reject){
-      knex.select().from('orders').where('customer_id', '=', customerID)
+      knex.select('total_price', 'items.name', 'items.size', 'lineitems.quantity').from('orders').join('lineitems', 'orders.id', 'order_id').join('items', 'item_id', 'items.id').where('lineitems.customer_id', '=', customerID)
       .then(function(rows){
         return resolve(rows);
       })
