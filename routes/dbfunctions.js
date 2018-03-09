@@ -106,7 +106,7 @@ module.exports = {
   },
   retrieveOrderData: function(customerID){
     return new Promise(function(resolve, reject){
-      knex.select().from('orders').where('customer_id', '=', customerID)
+      knex.select('total_price', 'items.name', 'items.size', 'lineitems.quantity').from('orders').join('lineitems', 'orders.id', 'order_id').join('items', 'item_id', 'items.id').where('lineitems.customer_id', '=', customerID)
       .then(function(rows){
         return resolve(rows);
       })
