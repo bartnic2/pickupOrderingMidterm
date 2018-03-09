@@ -29,15 +29,8 @@ module.exports = (knex) => {
       let foodInfo = rows[i]
       templateVars[foodInfo.name] = foodInfo
       }
-
-   //   console.log("this is root beer "+templateVars["Root Beer"].description)
       res.render('../views/order.ejs', {info:templateVars});
     })
-
-
-    // console.log("template vares"+templateVars)
-    // console.log("broad root beer" + templateVars["Root Beer"])
-    // console.log("this is root beer "+templateVars["Root Beer"].description)
 
   })
    
