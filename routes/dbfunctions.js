@@ -139,7 +139,6 @@ module.exports = {
 // 2. Generate new payments form, temporarily create
 // empty payment method and status.
 // 3. Using customer_id, restaurant_id, and payments_id, create a new order form. Pickup_time and total_price will be temporarily empty.
-//
 
 
 //For entering order data, you will want to first create a new order, then use that order ID, together with the customerID
