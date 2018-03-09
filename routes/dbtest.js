@@ -67,3 +67,11 @@ dbfunctions = require("./dbfunctions.js");
 // })
 
 //Function 8: Store orders
+//Data will come in the following form: customer_id, {item_id1: quantity1, item_id2: quantity2, ...}
+// dbfunctions.enterOrderData(1, 1, {1: 3, 2: 2})
+// .then(function(response){
+//   console.log(response);
+// })
+// .catch(function(err){
+//   console.log(err);
+// })

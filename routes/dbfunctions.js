@@ -80,7 +80,41 @@ module.exports = {
           return reject(err);
         })
     })
+  },
+  //receiving: customerid, [{itemID, quantity},{itemID2, quantity},...]
+  enterOrderData: function(customerID, restaurantID, orderObject){
+    return new Promise(function(resolve, reject){
+      knex.insert({customer_id: customerID, restaurant_id: restaurantID
+      })
+      .returning('id')
+      .into('orders')
+      .then(function (orderID){
+        for (itemID in orderObject){
+          knex.insert({customer_id: customerID, item_id: itemID, order_id: orderID[0], quantity: orderObject[itemID]})
+          .into('lineitems')
+          .asCallback()
+        }
+      })
+      .then(function(){
+        return resolve("Insertion successful");
+      })
+      .catch(function(err){
+        return reject(err);
+      })
+    })
   }
 }
 
-//Create a function where the restaurant can set all its 'item' data
+// For each item (or maybe just the first, assuming
+// all items in one order obtained from same restaurant?).
+
+// 1. Using itemid, obtain the restaurant id.
+// 2. Generate new payments form, temporarily create
+// empty payment method and status.
+// 3. Using customer_id, restaurant_id, and payments_id, create a new order form. Pickup_time and total_price will be temporarily empty.
+//
+
+
+//For entering order data, you will want to first create a new order, then use that order ID, together with the customerID
+//in order to specify each lineitem. Then, each key-value pair in the order object will generate a new row tied to those
+//IDs.
