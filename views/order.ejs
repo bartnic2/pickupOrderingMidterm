@@ -20,10 +20,7 @@
           <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
 
 
-        <!-- add button js scripts -->
-
-
-
+   
           <!-- Bootstrap requirements  -->
 
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -200,8 +197,8 @@
             <div class="wrapper">
 
                 <form class="form-signin">
-                    <h2 class="form-signin-heading">Please login</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                    <h2 class="form-signin-heading" id="login" method="POST" action="/login">Please login</h2>
+                    <input type="text" class="form-control" name="username" placeholder="User Name" required="" autofocus="" />
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
                     <label class="checkbox">
                     <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
@@ -219,19 +216,6 @@
 
         </div>
 
-
-    <script>
-     $(".container-Menu").find("#addbutton .add-button")on("submit", function (event){
-        event.preventDefault()
-        $.ajax({
-          method: "POST",
-          url: "/restaurant/:id/menu/add"
-         // success:
-        }).done((users) => {
-         //function here
-        })
-      })
-    </script>
 
     </body>
 

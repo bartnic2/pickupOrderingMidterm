@@ -23,7 +23,7 @@ $(document).ready(function() {
        // success:
       }).done((users) => {
         dbData.getAllCustomerData("John Wayne").then(function(rows){
-          console.log(rows);
+          console.log("heee"+rows);
         })
       })
     });
