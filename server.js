@@ -7,7 +7,6 @@ const ENV             = process.env.ENV || "development";
 const express         = require("express");
 const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
-const methodOverride  = require('method-override');
 const app             = express();
 const cookieParser    = require("cookie-parser");
 
@@ -41,7 +40,7 @@ app.use(cookieParser())
 app.use(knexLogger(knex));
 
 //use to replace POSTS with PUT and DELETE
-app.use(methodOverride('_method'));
+// app.use(methodOverride('_method'));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));

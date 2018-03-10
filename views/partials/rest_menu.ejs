@@ -1,46 +1,69 @@
 <div class="container-menu">
 
-            <div class="row">
+  <div class="row">
 
-                <div class="col-sm-12 col-10">
-                    <p> MENU </p>
-                    <table class="table table-hover">
+    <div class="col">
 
-                      <thead>
-                          <tr>
+      <h3> MENU </h3>
 
-                              <th>Name</th>
-                              <th class="text-center">Price</th>
-                              <th> </th>
-                          </tr>
-                      </thead>
+      <table class="table table-hover table-bordered">
 
-                      <tbody>
-                          <% for(let foodItem in info.foodmenu) { %>
-                          <tr>
-                              <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                  <div class="media-body">
-                                    <h5 class="media-heading food-name"><%= info.foodmenu[foodItem].name %></h5>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
-                              <td class="col-sm-1 col-md-1">
-                                <form   action="/restaurant/menu/add" method="POST" class="add-button">
-                                  <button  type="submit" class="add-button">
-                                    <span class="glyphicon glyphicon-remove"></span>Add
-                                  </button>
-                                </form>
-                              </td>
-                          </tr>
-                          <% }%>
-                      </tbody>
+        <thead>
 
-                    </table>
+          <tr>
 
-                </div>
+              <th scope="col"><h5>Name</h5></th>
 
-            </div>
+              <th scope="col"><h5>Descriptions</h5></th>
 
-        </div>
+              <th scope="col colspan="2"><h5>Price</h5></th>
+
+              <th></th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <% for(let foodItem in info.foodmenu) { %>
+
+          <tr>
+
+            <th scope="row">
+
+              <h6><%= info.foodmenu[foodItem].name %></h6>
+
+            </th>
+
+            <td><h6><%= info.foodmenu[foodItem].description %></h6></td>
+
+            <td><h6><%= info.foodmenu[foodItem].price %></h6></td>
+
+            <td>
+
+              <form   action="/restaurant/menu/add" method="POST" class="add-button">
+
+                <button  type="submit" class="add-button">
+
+                  <span class="glyphicon glyphicon-remove"></span>Add
+
+                </button>
+
+              </form>
+
+            </td>
+
+          </tr>
+
+          <% }%>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
