@@ -55,7 +55,7 @@ exports.seed = function(knex, Promise) {
     })
     .then(function(){
       return knex('customer').insert(
-        {id: 1, name: "John Wayne", address: "3920 Sarsaparilla Lane", email_address: "johnW@gmail.com", password: "wayne1234", phone_number: "647-938-1002"}
+        {name: "John Wayne", address: "3920 Sarsaparilla Lane", email_address: "johnW@gmail.com", password: "wayne1234", phone_number: "647-938-1002"}
       )
     })
     .then(function(){
