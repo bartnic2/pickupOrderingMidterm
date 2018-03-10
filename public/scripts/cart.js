@@ -11,6 +11,7 @@ $(document).ready(function() {
       total += +$(`.${fooditem}`).find('.order-total').text().slice(1);
     }
     $('.cart-total').text(`$${total}`);
+    $('#strID').data('amount', `${total}`)
   }
 
   function setChange(){
@@ -44,9 +45,9 @@ $(document).ready(function() {
   }
 
   //user adding a food item to the food list from the menu page
- $(".add-button").on("submit", function (event){
-    let increment = 1;
+ $(".add-button").on("click", function (event){
     event.preventDefault();
+    let increment = 1;
     let cost = +$(this).closest('tr').find('.food-price').text();
     let name = $(this).closest('tr').find('.food-name').text();
     let ordername = $('.cart-body').find('.order-name').text();
@@ -72,6 +73,5 @@ $(document).ready(function() {
     //   console.log(res);
     // })
   })
-
 
 })

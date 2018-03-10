@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 
 
+<!DOCTYPE html>
 <html lang="en">
 
-    <head>
-          <!-- Required meta tags -->
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
 
-          <title>Go To Town</title>
+    <% include ./partials/head %>
 
-          <!-- Bootstrap CSS -->
+  </head>
 
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-          <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-          <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/login_from.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
+  <body>
 
+    <% include ./partials/navbar %>
 
-   
+    <div>
+
+      <% include ./partials/rest_info %>
+
+    </div>
+
+    <div>
           <!-- Bootstrap requirements  -->
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-          <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-          <script type="text/javascript" src="/scripts/app.js"></script>
-
-          <script type="text/javascript" src="/scripts/cart.js"></script>
 
 
-    </head>
+      <% include ./partials/rest_menu %>
 
-    <body>
+
+    </div>
+
+
+    <div>
+
+      <% include ./partials/order_cart %>
+
+    </div>
 
         <div id="top">
             <div class="container d-flex flex-row">
@@ -76,10 +75,16 @@
                               </td>
                               <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
                               <td class="col-sm-1 col-md-1">
+<<<<<<< HEAD
                                 <form action="/restaurant/menu/add" method="POST">
                                   <button data-food-id="<%=info[foodItem].id%>" type="submit" class="add-button">
                                       <span class="glyphicon glyphicon-remove"></span>Add
 
+=======
+                                <button  type="submit" class="add-button">
+                                  <span class="glyphicon glyphicon-remove"></span>Add
+                                </button>
+>>>>>>> 63313f6ae73fd1f84ff6c007dd2e127e52e39709
                               </td>
                           </tr>
                           <% }%>
@@ -163,19 +168,18 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                            <button type="button" class="btn btn-default" action="/restaurant/menu/submit" method="POST">
-                                <span class="glyphicon glyphicon-play stripe-button"></span>
-                                <script
-                                  src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                                  data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                  data-amount="999"
-                                  data-name="Stripe.com"
-                                  data-description="Example charge"
-                                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                  data-locale="auto"
-                                  data-zip-code="true">
-                                </script>
-                            </button>
+                            <form action="/restaurant/menu/submit" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
+                                data-amount="999"
+                                data-name="Demo Site"
+                                data-description="Widget"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto"
+                                data-currency="cad">
+                              </script>
+                            </form>
                             </td>
                         </tr>
                   </tbody>
@@ -192,8 +196,8 @@
             <div class="wrapper">
 
                 <form class="form-signin">
-                    <h2 class="form-signin-heading" id="login" method="POST" action="/login">Please login</h2>
-                    <input type="text" class="form-control" name="username" placeholder="User Name" required="" autofocus="" />
+                    <h2 class="form-signin-heading">Please login</h2>
+                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
                     <label class="checkbox">
                     <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
@@ -213,6 +217,14 @@
 
     </body>
 
+    </div>
+
+        <!-- stripe scripts -->
+
+
+     <div>
+
+  </body>
 
 </html>
 

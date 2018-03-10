@@ -16,6 +16,7 @@ const knex              = require("knex")(knexConfig[ENV]);
 const morgan            = require('morgan');
 const knexLogger        = require('knex-logger');
 const twilio            = require('twilio');
+const stripe            = require('')
 
 <<<<<<< HEAD
 =======
