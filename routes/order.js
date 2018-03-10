@@ -13,27 +13,28 @@ module.exports = (knex) => {
   //from database needs the restaurant, email, imagepath, address, name, phone number, id
   //needs everything from items
   router.get('/restaurant/:id/menu', (req, res) => {
-
-
     let templateVars = {};
- 
-    dbData.getRestaurantData(req.params.id).then(function(rows){
-      templateVars.restaurantInfo = rows[0]
-      templateVars.restaurantInfo.id = req.params.id
-    })
-
-  
-    dbData.getAllRestaurantItems(req.params.id).then(function(rows){
-      for(let i = 0; i < rows.length; i++) { 
-
-      let foodInfo = rows[i]
-      templateVars[foodInfo.name] = foodInfo
-      }
+    templateVars.foodmenu = {};
+    Promise.all([
+      dbData.getRestaurantData(req.params.id).then(function(rows){
+        templateVars.restaurantInfo = rows[0];
+        templateVars.restaurantInfo.id = req.params.id;
+      }),
+      dbData.getAllRestaurantItems(req.params.id).then(function(rows){
+        for(let i = 0; i < rows.length; i++) {
+          let foodInfo = rows[i];
+          templateVars.foodmenu[foodInfo.name] = foodInfo;
+        }
+      })
+    ]).then(function(){
       res.render('../views/order.ejs', {info:templateVars});
     })
-
   })
-   
+
+  router.post('/restaurant/menu/submit', (req, res) => {
+    console.log(req.body);
+    res.send('hello');
+  })
 
 
   return router;

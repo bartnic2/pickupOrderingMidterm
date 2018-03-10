@@ -1,0 +1,10 @@
+.login_box{
+  position: fixed;
+  top: 60%;
+  left: 60%;
+}
+
+.btn-top button {
+  margin-top: 100px;
+
+}
