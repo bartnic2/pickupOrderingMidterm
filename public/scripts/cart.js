@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //Food added will list hyphenated names of foods, used as classes that ID particular rows.
   let foodAdded = [];
   let tempFood1 = [];
   let tempFood2 = [];
@@ -7,13 +8,10 @@ $(document).ready(function() {
   function setTotal(){
     let total = 0;
     for(let fooditem of foodAdded){
-      let noSpaceName = fooditem.split(' ').join('-');
-      total += +$(`.${noSpaceName}`).find('.order-total').text().slice(1);
+      total += +$(`.${fooditem}`).find('.order-total').text().slice(1);
     }
-    $('.cart-total').text(total);
+    $('.cart-total').text(`$${total}`);
   }
-
-
 
   function setChange(){
     $('.order-quantity').on('change', function (event){
@@ -30,8 +28,9 @@ $(document).ready(function() {
    $(".remove-button").on("click", function (event){
       // event.preventDefault()
       let name = $(this).closest('tr').find('.order-name').text();
+      let noSpaceName = name.split(' ').join('-');
       for(index in foodAdded){
-        if(foodAdded[index] === name){
+        if(foodAdded[index] === noSpaceName){
           tempFood1 = foodAdded.slice(0, index);
           tempFood2 = foodAdded.slice(index + 1);
           foodconcat = tempFood1.concat(tempFood2);
@@ -61,7 +60,7 @@ $(document).ready(function() {
       newline.find('.order-total').text(`$${cost}`);
       newline.prependTo('.cart-body');
       increment++;
-      foodAdded.push(name);
+      foodAdded.push(noSpaceName);
 
       setChange();
       setRemove();
