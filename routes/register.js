@@ -32,7 +32,6 @@ module.exports = (knex) => {
 
   router.post('/register', (req, res) => {
     let customer = {
-      id: 54,
       name: req.body.name,
       address: req.body.address,
       phoneNumber: req.body.phone,
@@ -44,12 +43,6 @@ module.exports = (knex) => {
 
     res.redirect('/')
   })
-
-
-
-
-
-
 
 
   return router;

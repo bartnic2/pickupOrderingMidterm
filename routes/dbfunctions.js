@@ -131,11 +131,9 @@ module.exports = {
     })
   },
   registerUser: function(userInfo){
-    console.log("im being called")
     return new Promise(function(resolve, reject){
-      knex.insert({id: userInfo.id, email_address: userInfo.email, address: userInfo.address, name: userInfo.name, password: userInfo.password, phone_number: userInfo.phoneNumber})
+      knex.insert({email_address: userInfo.email_address, address: userInfo.address, name: userInfo.name, password: userInfo.password, phone_number: userInfo.phone_number})
       .into('customer')
-      .asCallback()
       .then(function(){
         return resolve("Insertion successful");
       })
