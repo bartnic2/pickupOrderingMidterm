@@ -1,11 +1,12 @@
 "use strict";
 
 //this is the restaurant menu page
-
+const keyPublishable  = process.env.PUBLISHABLE_KEY;
+const keySecret       = process.env.SECRET_KEY;
 const express = require('express');
 const router  = express.Router();
 const dbData = require("./dbfunctions.js")
-
+const stripe = require("stripe")(keySecret);
 
 module.exports = (knex) => {
 
@@ -32,15 +33,22 @@ module.exports = (knex) => {
     })
   })
 
-  router.post('/restaurant/menu/submit', (req, res) => {
+  router.post("/charge", (req, res) => {
+    let amount = 500;
     console.log(req.body);
-    console.log(req.header);
-    res.send(res);
-  })
-
-  // router.post('/restaurant/menu/add', (req, res) => {
-  //   res.send('hello');
-  // })
+    stripe.customers.create({
+       email: req.body.stripeEmail,
+      source: req.body.stripeToken
+    })
+    .then(customer =>
+      stripe.charges.create({
+        amount,
+        description: "Sample Charge",
+           currency: "usd",
+           customer: customer.id
+      }))
+    .then(charge => res.render("../views/charge.ejs"));
+  });
 
   return router;
 }
