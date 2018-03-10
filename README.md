@@ -34,7 +34,7 @@
 
 Need list of items per restaurant. Each item should have:
 
-Name, price, and description. These should display on each restaurant page. Try to go for 4 items per restaurant if possible.
+Name, price, and description. These should display on each restaurant page. Try to go for 4 items per restaurant if possible. Of course, update the pages too.
 
 Login and registration. System will check if user is logged in/exists, if everything is okay a cookie will be generated. When sending an order request, will fetch appropriate user data from database.
 
