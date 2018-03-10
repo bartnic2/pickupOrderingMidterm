@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-
-
-<!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <% include ./partials/head %>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="Midterm Project" content="">
+<meta name="Renato - Dylan - Piotr" content="">
 
-  </head>
+
+<title>Go To Town</title>
+
+<!-- Bootstrap  CSS -->
+
+<link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+<link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+<link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<link rel="stylesheet" href="/styles/index.css" type="text/css" />
+<link rel="stylesheet" href="/styles/login_box.css" type="text/css" />
+
+<!--  Requirements  -->
+
+<script type="text/javascript" src="../vendor/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="../scripts/app.js"></script>
+<script type="text/javascript" src="../scripts/order.js"></script>
+
+</head>
 
   <body>
 
-    <% include ./partials/navbar %>
+    <% include partials/navbar %>
 
     <div>
 
-      <% include ./partials/rest_info %>
+      <% include partials/rest_info %>
 
     </div>
 
@@ -24,7 +45,7 @@
           <!-- Bootstrap requirements  -->
 
 
-      <% include ./partials/rest_menu %>
+      <% include partials/rest_menu %>
 
 
     </div>
@@ -32,197 +53,10 @@
 
     <div>
 
-      <% include ./partials/order_cart %>
+      <% include partials/order_cart %>
 
     </div>
 
-        <div id="top">
-            <div class="container d-flex flex-row">
-                <img src="https://www.saratogarestaurants.com/buzz/wp-content/uploads/sites/60/2016/12/primediningroom.jpg" class="media-object img-thumbnail p-2 ">
-                  <div class="media-body p-2">
-                      <h5 class="mt-0 mb-1"><%=info.restaurantInfo.name%></h5>
-                      <p><%=info.restaurantInfo.description%></p>
-                  </div>
-            </div>
-        </div>
-
-        <div class="container-menu">
-
-            <div class="row">
-
-                <div class="col-sm-12 col-10">
-                    <p> MENU </p>
-                    <table class="table table-hover">
-
-                      <thead>
-                          <tr>
-
-                              <th>Name</th>
-                              <th class="text-center">Price</th>
-                              <th> </th>
-                          </tr>
-                      </thead>
-
-                      <tbody>
-                          <% for(let foodItem in info.foodmenu) { %>
-                          <tr>
-                              <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                  <div class="media-body">
-                                    <h5 class="media-heading food-name"><%= info.foodmenu[foodItem].name %></h5>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
-                              <td class="col-sm-1 col-md-1">
-<<<<<<< HEAD
-                                <form action="/restaurant/menu/add" method="POST">
-                                  <button data-food-id="<%=info[foodItem].id%>" type="submit" class="add-button">
-                                      <span class="glyphicon glyphicon-remove"></span>Add
-
-=======
-                                <button  type="submit" class="add-button">
-                                  <span class="glyphicon glyphicon-remove"></span>Add
-                                </button>
->>>>>>> 63313f6ae73fd1f84ff6c007dd2e127e52e39709
-                              </td>
-                          </tr>
-                          <% }%>
-                      </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="container cart">
-
-            <p> CART </p>
-
-            <div class="row">
-
-                <div class="col-sm-12 col-10">
-                    <table class="table table-hover">
-                      <thead>
-                          <tr>
-                              <th>Product</th>
-                              <th>Quantity</th>
-                              <th class="text-center">Price</th>
-                              <th class="text-center">Total</th>
-                              <th> </th>
-                          </tr>
-                      </thead>
-                      <tbody class="cart-body">
-
-                          <tr class="order-line" style="visibility: hidden">
-                              <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h5 class="media-heading order-name">Empty</h5>
-                                    </div>
-                                </div>
-                              </td>
-
-                              <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="text" class="form-control order-quantity" value=''>
-                              </td>
-
-                              <td class="col-sm-1 col-md-1 text-center order-price"><strong></strong></td>
-
-                              <td class="col-sm-1 col-md-1 text-center order-total"><strong></strong></td>
-
-                              <td class="col-sm-1 col-md-1">
-                                <button type="button" class="remove-button">
-                                    <span class="glyphicon glyphicon-remove"></span> Remove
-                                </button>
-                              </td>
-                          </tr>
-
-<!--                         <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5></h5></td>
-                            <td class="text-right"><h5><strong></strong></h5></td>
-                        </tr> -->
-<!--                         <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5>Subtotal</h5></td>
-                            <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-                        </tr>
-                        <tr> -->
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h3>Cart Total</h3></td>
-                            <td class="text-right cart-total"><h3><strong>$0</strong></h3></td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>
-                            <form action="/restaurant/menu/submit" method="POST">
-                              <script
-                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
-                                data-amount="999"
-                                data-name="Demo Site"
-                                data-description="Widget"
-                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                data-locale="auto"
-                                data-currency="cad">
-                              </script>
-                            </form>
-                            </td>
-                        </tr>
-                  </tbody>
-
-            </table>
-
-        </div>
-
-
-
-
-        <div class="col-4 login-box">
-
-            <div class="wrapper">
-
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Please login</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-                    <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-                    <label class="checkbox">
-                    <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-                    </label>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                </form>
-
-            </div>
-
-        </div>
-
-            <div class="btn-top">
-                <button type="button"  class="btn btn-outline-primary btn-top"><a href="#top">Back to top</a></button>
-            </div>
-
-        </div>
-
-    </body>
-
-    </div>
-
-        <!-- stripe scripts -->
-
-
-     <div>
 
   </body>
 

@@ -7,39 +7,27 @@ const ENV             = process.env.ENV || "development";
 const express         = require("express");
 const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
-const methodOverride  = require('method-override')
+const methodOverride  = require('method-override');
 const app             = express();
-const cookieParser    = require("cookie-parser")
+const cookieParser    = require("cookie-parser");
 
 const knexConfig        = require("./knexfile");
 const knex              = require("knex")(knexConfig[ENV]);
 const morgan            = require('morgan');
 const knexLogger        = require('knex-logger');
 const twilio            = require('twilio');
-const stripe            = require('')
+// const stripe            = require('')
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> dylan-routes
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
 const homeRoutes      = require("./routes/homepage");
 const orderRoutes      = require("./routes/order");
 const confirmationRoutes     = require("./routes/confirmation");
 const registerRoutes  = require("./routes/register");
-const restOrderList   = require("./routes/restaurant-order-list")
-const restDashboard   = require("./routes/restaurant-dashboard")
-const sms             = require("./routes/sms")
-const login           = require("./routes/login")
-
-
-app.post("/restaurant/menu/add", (req, res) => {
-  console.log(req.body)
-  res.send("hello");
-})
+const restOrderList   = require("./routes/restaurant-order-list");
+const restDashboard   = require("./routes/restaurant-dashboard");
+const sms             = require("./routes/sms");
+const login           = require("./routes/login");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -64,7 +52,6 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-
 
 
 // Mount all resource routes
