@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
       table.string('name');
       table.string('category');
       table.decimal('price', 6, 2);
-      table.json('images');
+      table.string('image');
       table.string('size');
       table.text('description');
     }),
@@ -55,7 +55,7 @@ exports.up = function(knex, Promise) {
       table.string('phone_number');
       table.string('address');
       table.text('description');
-      table.json('images');
+      table.string('image');
     })
   ])
 };

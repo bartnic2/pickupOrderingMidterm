@@ -4,7 +4,7 @@ var knex = require('knex')(require('../knexfile.js').development)
 module.exports = {
   getAllRestaurantItems: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('items.id', 'items.name', 'category', 'price', 'items.images', 'size', 'items.description').from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.id','=',restaurant_id)
+      knex.select('items.id', 'items.name', 'category', 'price', 'items.image', 'size', 'items.description').from('items').join('restaurant', 'restaurant_id', 'restaurant.id').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
@@ -15,7 +15,7 @@ module.exports = {
   },
   getRestaurantData: function(restaurant_id){
     return new Promise(function(resolve, reject){
-      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'images').from('restaurant').where('restaurant.id','=',restaurant_id)
+      knex.select('name', 'address', 'email_address', 'phone_number', 'description', 'image').from('restaurant').where('restaurant.id','=',restaurant_id)
         .then(function(rows){
           return resolve(rows);
         })
@@ -131,11 +131,9 @@ module.exports = {
     })
   },
   registerUser: function(userInfo){
-    console.log("im being called")
     return new Promise(function(resolve, reject){
-      knex.insert({id: userInfo.id, email_address: userInfo.email, address: userInfo.address, name: userInfo.name, password: userInfo.password, phone_number: userInfo.phoneNumber})
+      knex.insert({email_address: userInfo.email_address, address: userInfo.address, name: userInfo.name, password: userInfo.password, phone_number: userInfo.phone_number})
       .into('customer')
-      .asCallback()
       .then(function(){
         return resolve("Insertion successful");
       })
@@ -156,7 +154,6 @@ module.exports = {
 // 2. Generate new payments form, temporarily create
 // empty payment method and status.
 // 3. Using customer_id, restaurant_id, and payments_id, create a new order form. Pickup_time and total_price will be temporarily empty.
-//
 
 
 //For entering order data, you will want to first create a new order, then use that order ID, together with the customerID
