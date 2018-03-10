@@ -93,14 +93,18 @@ dbfunctions = require("./dbfunctions.js");
 // .catch(function(err){
 //   console.log(err);
 // })
-userInfo = {email_address: "xyz@gmail.com", address: "1234", name: "man", password: "go", phone_number: "123 456 7890"};
-dbfunctions.registerUser(userInfo)
-.then(function(response){
-  console.log(response);
-})
-.catch(function(err){
-  console.log(err);
-})
+
+//Function 10: User registration test
+
+// userInfo = {email_address: "xyz@gmail.com", address: "1234", name: "man", password: "go", phone_number: "123 456 7890"};
+// dbfunctions.registerUser(userInfo)
+// .then(function(response){
+//   console.log(response);
+// })
+// .catch(function(err){
+//   console.log(err);
+// })
+
 
 
 

@@ -1,110 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Go To Town</title>
-
-    <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/login_from.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/index.css" type="text/css" />
-
-
-
-    <!-- login script  -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- Bootstrap riquirements  -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
+    <% include ./partials/head %>
 
   </head>
 
   <body>
 
+    <% include ./partials/navbar %>
 
+    <div class="container-fluid"   id="top">
 
-            <div id="top">
+      <div class="col">
 
-                <h1 class="text-center logo" >Go to Town</h1>
+        <h2 class="text-center" >Order From Local Restaurants You Love</h2>
 
-                <h2 class="text-center" >Order From Local Restaurants You Love</h2>
+      </div>
 
-            </div>
+    </div>
 
+    <div class="container-fluid photo" >
 
+      <div class="row">
 
+        <div class="col-6">
 
-        <div class="container">
+          <% for (let restaurant in info) {%>
 
-            <div class="row">
+            <form class="restaurant" id="register" method="GET" action="/restaurant/<%=info[restaurant].id%>/menu">
 
-                <div class="col-8">
+              <button class="redirect row" type="submit">
 
-                      <ul class="list-group">
+                <img class="col-4 rounded-circle" src='<%=info[restaurant].image%>' alt="Generic placeholder image">
 
-                        <% for (let restaurant in info) {%>
-                        <form class="restaurant" id="register" method="GET" action="/restaurant/<%=info[restaurant].id%>/menu">
-                        <button class="redirect" type="submit">
-                        <li class="media my-4">
-                          <img class="mr-3" src='<%=info[restaurant].image%>' alt="Generic placeholder image">
-                          <div class="media-body">
-                            <h5 class="mt-0 mb-1"> <%= [restaurant] %></h5>
+                <h5 class="col-3 "> <%= [restaurant] %></h5>
 
-                          <%= info[restaurant].description %>
-                          </div>
-                        </li>
-                        </button>
-                      </form>
-                        <%} %>
+                <div class="col-5"> <%= info[restaurant].description %></div>
 
-                      </ul>
+              </button>
 
-                </div>
+            </form>
 
+          <%} %>
 
-                    <form id="login" method="POST" action="/login">
-                      <h2 class="form-signin-heading">Please login</h2>
-                      <input type="text" class="form-control" name="username" placeholder="User Name" required="" autofocus="" />
-                      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-                      <label class="checkbox">
-                        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-                      </label>
-                      <button class="btn btn-lg btn-primary btn-block" type="submit" name="username">Login</button>
-                      <!-- <input type="submit" name="login"> -->
-                    </form>
-                </div>
-
-                <div class="btn-top">
-                    <button type="button"  class="btn btn-outline-primary btn-top"><a href="#top">Back to top</a></button>
-                  <form class="register-link" id="register" method="GET" action="/register">
-                    <button class="redirect" type="submit">register</button>
-                  </form>
-
-
-                </div>
-             </div>
         </div>
 
+        <div class="col-4 login_box">
 
-    <!-- Bootstrap riquirements  -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <% include ./partials/login_box %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <% include ./partials/bootstrap %>
+
   </body>
+
 </html>
+
+
+
+
+

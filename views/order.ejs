@@ -58,37 +58,32 @@
                       <thead>
                           <tr>
 
-                              <th>Quantity</th>
+                              <th>Name</th>
                               <th class="text-center">Price</th>
                               <th> </th>
                           </tr>
                       </thead>
 
                       <tbody>
-                          <% for(let foodItem in info) { %>
-
-
+                          <% for(let foodItem in info.foodmenu) { %>
                           <tr>
                               <td class="col-sm-8 col-md-6">
-                              <div class="media">
-
+                                <div class="media">
                                   <div class="media-body">
-                                      <h5 class="media-heading"><%= info[foodItem].name %></h5>
+                                    <h5 class="media-heading food-name"><%= info.foodmenu[foodItem].name %></h5>
                                   </div>
-                              </div>
+                                </div>
                               </td>
-
-                              <td class="col-sm-1 col-md-1 text-center"><strong><%= info[foodItem].price %></strong></td>
+                              <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
                               <td class="col-sm-1 col-md-1">
                                 <form   action="/restaurant/menu/add" method="POST" class="add-button">
                                   <button  type="submit" class="add-button">
-                                      <span class="glyphicon glyphicon-remove"></span>Add
+                                    <span class="glyphicon glyphicon-remove"></span>Add
                                   </button>
                                 </form>
                               </td>
                           </tr>
                           <% }%>
-
                       </tbody>
 
                     </table>
@@ -116,51 +111,52 @@
                               <th> </th>
                           </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="cart-body">
 
-
-
-                          <tr>
+                          <tr class="order-line" style="visibility: hidden">
                               <td class="col-sm-8 col-md-6">
-                              <div class="media">
-
-                                  <div class="media-body">
-                                      <h5 class="media-heading">Product name</h5>
-                                  </div>
-                              </div></td>
-                              <td class="col-sm-1 col-md-1" style="text-align: center">
-                              <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h5 class="media-heading order-name">Empty</h5>
+                                    </div>
+                                </div>
                               </td>
-                              <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                              <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+
+                              <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="text" class="form-control order-quantity" value=''>
+                              </td>
+
+                              <td class="col-sm-1 col-md-1 text-center order-price"><strong></strong></td>
+
+                              <td class="col-sm-1 col-md-1 text-center order-total"><strong></strong></td>
+
                               <td class="col-sm-1 col-md-1">
-                              <button type="button" class="remove-button">
-                                  <span class="glyphicon glyphicon-remove"></span> Remove
-                              </button></td>
+                                <button type="button" class="remove-button">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </button>
+                              </td>
                           </tr>
 
-
-
-                        <tr>
+<!--                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h5></h5></td>
                             <td class="text-right"><h5><strong></strong></h5></td>
-                        </tr>
-                        <tr>
+                        </tr> -->
+<!--                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h5>Subtotal</h5></td>
                             <td class="text-right"><h5><strong>$24.59</strong></h5></td>
                         </tr>
-                        <tr>
+                        <tr> -->
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
-                            <td><h3>Total</h3></td>
-                            <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                            <td><h3>Cart Total</h3></td>
+                            <td class="text-right cart-total"><h3><strong>$0</strong></h3></td>
                         </tr>
                         <tr>
                             <td>   </td>
@@ -168,7 +164,7 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                            <button type="button" class="btn btn-default" action="your-server-side-code" method="POST">
+                            <button type="button" class="btn btn-default" action="/restaurant/menu/submit" method="POST">
                                 <span class="glyphicon glyphicon-play stripe-button"></span>
                                 <script
                                   src="https://checkout.stripe.com/checkout.js" class="stripe-button "
@@ -215,7 +211,6 @@
             </div>
 
         </div>
-
 
     </body>
 
