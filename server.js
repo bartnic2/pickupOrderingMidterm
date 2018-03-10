@@ -17,6 +17,12 @@ const morgan            = require('morgan');
 const knexLogger        = require('knex-logger');
 const twilio            = require('twilio');
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> dylan-routes
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
 const homeRoutes      = require("./routes/homepage");
@@ -27,6 +33,13 @@ const restOrderList   = require("./routes/restaurant-order-list")
 const restDashboard   = require("./routes/restaurant-dashboard")
 const sms             = require("./routes/sms")
 const login           = require("./routes/login")
+
+
+app.post("/restaurant/menu/add", (req, res) => {
+  console.log(req.body)
+  res.send("hello");
+})
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
