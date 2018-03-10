@@ -6,6 +6,7 @@ const express = require('express');
 const router  = express.Router();
 const dbData = require("./dbfunctions.js")
 
+
 module.exports = (knex) => {
 
   //restaurant menu page
@@ -33,9 +34,13 @@ module.exports = (knex) => {
 
   router.post('/restaurant/menu/submit', (req, res) => {
     console.log(req.body);
-    res.send('hello');
+    console.log(req.header);
+    res.send(res);
   })
 
+  // router.post('/restaurant/menu/add', (req, res) => {
+  //   res.send('hello');
+  // })
 
   return router;
 }

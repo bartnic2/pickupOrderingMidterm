@@ -23,7 +23,6 @@
         <!-- add button js scripts -->
 
 
-
           <!-- Bootstrap requirements  -->
 
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -34,6 +33,8 @@
           <script type="text/javascript" src="/scripts/app.js"></script>
 
           <script type="text/javascript" src="/scripts/cart.js"></script>
+
+        <!-- stripe scripts -->
 
 
     </head>
@@ -79,11 +80,9 @@
                               </td>
                               <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
                               <td class="col-sm-1 col-md-1">
-                                <form   action="/restaurant/menu/add" method="POST" class="add-button">
-                                  <button  type="submit" class="add-button">
-                                    <span class="glyphicon glyphicon-remove"></span>Add
-                                  </button>
-                                </form>
+                                <button  type="submit" class="add-button">
+                                  <span class="glyphicon glyphicon-remove"></span>Add
+                                </button>
                               </td>
                           </tr>
                           <% }%>
@@ -167,19 +166,18 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                            <button type="button" class="btn btn-default" action="/restaurant/menu/submit" method="POST">
-                                <span class="glyphicon glyphicon-play stripe-button"></span>
-                                <script
-                                  src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                                  data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                  data-amount="999"
-                                  data-name="Stripe.com"
-                                  data-description="Example charge"
-                                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                  data-locale="auto"
-                                  data-zip-code="true">
-                                </script>
-                            </button>
+                            <form action="/restaurant/menu/submit" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
+                                data-amount="999"
+                                data-name="Demo Site"
+                                data-description="Widget"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto"
+                                data-currency="cad">
+                              </script>
+                            </form>
                             </td>
                         </tr>
                   </tbody>
