@@ -13,19 +13,13 @@
 
     <div class="container-fluid"   id="top">
 
+      <div class="col">
 
-      <div class="row">
-
-        <div class="col">
-
-          <h2 class="text-center" >Order From Local Restaurants You Love</h2>
-
-        </div>
+        <h2 class="text-center" >Order From Local Restaurants You Love</h2>
 
       </div>
 
     </div>
-
 
     <div class="container-fluid photo" >
 
@@ -37,13 +31,13 @@
 
             <form class="restaurant" id="register" method="GET" action="/restaurant/<%=info[restaurant].id%>/menu">
 
-              <button class="redirect" type="submit">
+              <button class="redirect row" type="submit">
 
-                <img  src="..." alt="Generic placeholder image">
+                <img class="col-4 rounded-circle" src='<%=info[restaurant].image%>' alt="Generic placeholder image">
 
-                <h5> <%= [restaurant] %></h5>
+                <h5 class="col-3 "> <%= [restaurant] %></h5>
 
-                <%= info[restaurant].description %>
+                <div class="col-5"> <%= info[restaurant].description %></div>
 
               </button>
 
@@ -53,7 +47,7 @@
 
         </div>
 
-        <div class="col-4">
+        <div class="col-4 login_box">
 
           <% include ./partials/login_box %>
 
