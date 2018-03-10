@@ -9,6 +9,7 @@ const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
 const methodOverride  = require('method-override')
 const app             = express();
+const cookieParser    = require("cookie-parser")
 
 const knexConfig        = require("./knexfile");
 const knex              = require("knex")(knexConfig[ENV]);
@@ -16,8 +17,6 @@ const morgan            = require('morgan');
 const knexLogger        = require('knex-logger');
 const twilio            = require('twilio');
 const stripe            = require('')
-
-
 
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
@@ -28,11 +27,14 @@ const registerRoutes  = require("./routes/register");
 const restOrderList   = require("./routes/restaurant-order-list")
 const restDashboard   = require("./routes/restaurant-dashboard")
 const sms             = require("./routes/sms")
+const login           = require("./routes/login")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
+
+app.use(cookieParser())
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
@@ -61,7 +63,7 @@ app.use(registerRoutes(knex));
 app.use(restOrderList(knex));
 app.use(restDashboard(knex));
 app.use(sms(knex));
-
+app.use(login(knex));
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
