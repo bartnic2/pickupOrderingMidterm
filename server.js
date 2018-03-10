@@ -18,6 +18,7 @@ const twilio            = require('twilio');
 
 
 
+
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
 const homeRoutes      = require("./routes/homepage");
@@ -27,6 +28,13 @@ const registerRoutes  = require("./routes/register");
 const restOrderList   = require("./routes/restaurant-order-list")
 const restDashboard   = require("./routes/restaurant-dashboard")
 const sms             = require("./routes/sms")
+
+
+app.post("/restaurant/menu/add", (req, res) => {
+  console.log(req.body)
+  res.send("hello");
+})
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

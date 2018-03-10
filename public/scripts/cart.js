@@ -3,14 +3,15 @@ $(document).ready(function() {
 
 
   //user adding a food item to the food list from the menu page
- $(".add-button").on("submit", function (event){
+ $(".add-button").on("click", function (event){
     event.preventDefault()
+    alert("yo")
     $.ajax({
       method: "POST",
+      data: ,
       url: "/restaurant/menu/add",
-      success: function (stuff) {
-        alert("success")
-        console.log(stuff)
+      success: function (res) {
+        console.log(res)
       }
     })
   })
