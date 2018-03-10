@@ -129,8 +129,23 @@ module.exports = {
         return reject(err);
       })
     })
+  },
+  registerUser: function(userInfo){
+    return new Promise(function(resolve, reject){
+      knex.insert({email_address: userInfo.email_address, address: userInfo.address, name: userInfo.name, password: userInfo.password, phone_number: userInfo.phone_number})
+      .into('customer')
+      .then(function(){
+        return resolve("Insertion successful");
+      })
+      .catch(function(err){
+        return reject(err);
+      })
+    })
   }
-}
+
+
+} 
+
 
 // For each item (or maybe just the first, assuming
 // all items in one order obtained from same restaurant?).
