@@ -38,6 +38,3 @@ Name, price, and description. These should display on each restaurant page. Try 
 
 Login and registration. System will check if user is logged in/exists, if everything is okay a cookie will be generated. When sending an order request, will fetch appropriate user data from database.
 
-
-
-

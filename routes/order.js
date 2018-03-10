@@ -31,7 +31,8 @@ module.exports = (knex) => {
     })
   })
 
-  router.post('/restaurant/menu/add', (req, res) => {
+  router.post('/restaurant/menu/submit', (req, res) => {
+    console.log(req.body);
     res.send('hello');
   })
 

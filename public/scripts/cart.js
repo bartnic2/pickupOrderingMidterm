@@ -50,7 +50,7 @@ $(document).ready(function() {
     let name = $(this).closest('tr').find('.food-name').text();
     let ordername = $('.cart-body').find('.order-name').text();
     let noSpaceName = name.split(' ').join('-');
-    if(!foodAdded.includes(name)){
+    if(!foodAdded.includes(noSpaceName)){
       let newline = $('.order-line').clone();
       newline.css('visibility', 'visible');
       newline.attr('class', `${noSpaceName}`);
