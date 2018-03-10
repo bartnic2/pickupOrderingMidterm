@@ -81,9 +81,9 @@ module.exports = {
       return resolve("success");
     })
   },
-  checkForCustomer: function(customerName){
+  checkForCustomer: function(customerEmail){
     return new Promise(function(resolve, reject){
-      knex.select().from('customer').where('name','=',customerName)
+      knex.select().from('customer').where('email_address','=',customerEmail)
         .then(function(rows){
           if(rows.length === 0){
             return resolve(false);
