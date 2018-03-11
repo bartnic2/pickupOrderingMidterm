@@ -33,10 +33,9 @@ module.exports = (knex) => {
       res.render('../views/order.ejs', {info:templateVars});
     })
   })
-
   router.post("/charge", (req, res) => {
 
-    console.log(req.body);
+    console.log("charge is receiving");
     sendText.notifyRestaurant(req.body)
 
     res.send('hello');

@@ -32,13 +32,13 @@ module.exports =  {
       for(let name in orderInfo.order){
         orderList += `${orderInfo.order[name]} ${name}, `;
       }
+      console.log("order list " + orderList)
       client.messages.create({
           body: `Hi ${orderInfo.restaurant_email}, an order of ${orderList} has been placed by ${orderInfo.card.name}, please respond with the time it will take to prepare in minutes`,
-          to: `+1${orderInfo.restaurant_phone}`,  // Text this restaurant number replace with your own to test though
+          to: `+14164522009`,  // Text this restaurant number replace with your own to test though${orderInfo.restaurant_phone}
           from: '+16476997847' // From a valid Twilio number
       })
       .then((message) => console.log(message.sid));
     }
-  
 }
 //     
