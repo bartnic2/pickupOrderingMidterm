@@ -7,6 +7,7 @@ const express = require('express');
 const router  = express.Router();
 const dbData = require("./dbfunctions.js")
 const stripe = require("stripe")(keySecret);
+const sendText = require("../public/scripts/twilioFunctions.js")
 
 module.exports = (knex) => {
 
@@ -35,13 +36,10 @@ module.exports = (knex) => {
 
   router.post("/charge", (req, res) => {
 
-    req.body.restaurant_phone
-    req.body.order
     console.log(req.body);
+    sendText.notifyRestaurant(req.body)
+
     res.send('hello');
   })
-
-
   return router;
 }
-
