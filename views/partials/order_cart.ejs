@@ -1,94 +1,88 @@
 <div class="container-menu">
 
-  <div>
+  <div class="cart">
 
-    <div class="cart">
+    <h3> CART </h3>
 
-      <h3> CART </h3>
+    <table class="table table-hover table-bordered">
 
-      <table class="table table-hover table-bordered">
+      <thead>
 
-        <thead>
+        <tr>
 
-          <tr>
+            <th class="col-7"><h5>Product</h5></th>
 
-              <th class="col-7"><h5>Product</h5></th>
+            <th>Quantity</th>
 
-              <th>Quantity</th>
+            <th class="col-2 text-center">Price</th>
 
-              <th class="col-2 text-center">Price</th>
+            <th class="col-2 text-center">Total</th>
 
-              <th class="col-2 text-center">Total</th>
+            <th class="col-1"> </th>
 
-              <th class="col-1"> </th>
+        </tr>
 
-          </tr>
+      </thead>
 
-        </thead>
+      <tbody class="cart-body">
 
-        <tbody class="cart-body">
+        <tr class="order-line" style="visibility: hidden">
 
-          <tr class="order-line" style="visibility: hidden">
+          <td >
 
-            <td >
+            <div >
 
+              <h5 class="order-name">Empty</h5>
 
-                <div >
+            </div>
 
-                  <h5 class="order-name">Empty</h5>
+          </td>
 
-                </div>
+          <td style="text-align: center">
 
-            </td>
+             <input type="text" class="form-control order-quantity" value=''>
 
-            <td style="text-align: center">
+          </td>
 
-               <input type="text" class="form-control order-quantity" value=''>
+            <td class="text-center order-price"><strong></strong></td>
 
-            </td>
-
-            <td class="text-center order-price"></td>
-
-            <td class="text-center order-total"></td>
+            <td class=" text-center order-total"><strong></strong></td>
 
             <td class="">
 
               <button type="button" class="remove-button btn btn-lg btn-primary btn-block">
 
-                  <span class="glyphicon glyphicon-remove"></span> Remove
+            </button>
 
-              </button>
-
-            </td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-      <table class="no-line ">
-
-        <tr>
-
-          <td><h3>Cart Total</h3></td>
-
-          <td class="cart-total"><h3>$0</h3></td>
+          </td>
 
         </tr>
 
-      </table>
+      </tbody>
 
-      <button class="glyphicon glyphicon-play" id="customButton">Purchase</button>
+    </table>
 
-    </div>
+    <table class="no-border col align-self-end">
+
+      <tr class="tb-alg">
+
+        <td><h3>Cart Total</h3></td>
+
+        <td class="cart-total"><h3>$0</h3></td>
+
+        <td>
+
+          <button class="glyphicon glyphicon-play btn btn-lg btn-primary btn-block" id="customButton">Purchase</button>
+
+        </td>
+
+      </tr>
+
+    </table>
 
   </div>
 
 </div>
-
-
-
 
 
 
