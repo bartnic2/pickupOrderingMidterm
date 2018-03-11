@@ -22,7 +22,6 @@ $(document).ready(function() {
         $(".messages").text(`${res}`);
       }
     })
-
   })
 
   $.get('/login').done(function(res){
