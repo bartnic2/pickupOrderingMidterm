@@ -3,42 +3,24 @@ const router  = express.Router();
 const dbData = require("./dbfunctions.js")
 
 
-module.exports = (knex) => {
+module.exports = (knex, randomString) => {
 
   router.post("/login", (req, res) => {
-   console.log("heloooooo"+ req.body.username);
-   dbData.getAllCustomerData(req.body.username).then(function(rows){
-      console.log(rows[0].name)
-      console.log(rows[0].password)
+console.log(req.body.userName)
+console.log(req.body.password)
+   dbData.getAllCustomerData(req.body.userName)
+   .then(function(rows){
       if(rows[0].password === req.body.password){
-        console.log("successful match")
+        req.session.user_id = randomString()
+        res.send("You have been signed in")
       } else {
-        console.log("wrong password")
+        res.send("invalid password")
       }
     })
     .catch(function(err){
-    console.log(err)
-    console.log("wrong")
+      console.log(err)
+      res.send("invalid username")
     })
   });
-
   return router;
 }
-
-
-  //  if(userData){
-  //   console.log("yay i'm a thing")
-  //   console.log(userData.rows)
-  //  }
-  //  else{
-  //   console.log("i am not in the database")
-  //  }
-
-  // dbData.getAllRestaurantData().then(function(rows){
-   
-  //  for(let i = 0; i < rows.length; i++){
-  //     let restaurantInfo = rows[i]
-  //     templateVars[restaurantInfo.name] = restaurantInfo
-  //   }
-  //   res.render("index", {info:templateVars});
-  // })
