@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
+
+#top {
+    margin-top: 20px;
+    height: 500px;
+    background: url(/img/snack.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.5;
+
+  > h2 {
+  z-index: 1;
+  }
+}
+
+button > img {
+    width: 220px;
+    height: 150px;
+}
+
+.col-5{
+  padding:20px;
+  margin: auto;
+}
+h5.col-3{
+  padding:20px;
+  margin: auto;
+}
+
+container-fluid.photo {
+    margin-top: 35px;
+}
+
+form#register {
+    margin: 10px;
+}
+
+button.redirect.row {
+    border-radius: 22px;
+    background: #FFE1D3;
+    /*box-shadow: 5px 3px #FFB99A;*/
+
+  :hover{
+    box-shadow: 5px 3px #FFB99A;
+  }
+}
+
