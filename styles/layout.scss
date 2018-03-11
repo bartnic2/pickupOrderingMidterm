@@ -1,7 +1,89 @@
-body {
-  background-color: #EEE;
+@import url("navbar.css");
+@import url("index.css");
+@import url("login_box.css");
+@import url("register.css");
+@import url("cart.css");
+@import url("rest_menu.css");
 
-  h1 {
-    color: #244751;
+
+$w-break-small: 900px;
+$w-break-large: 1280px;
+$h-break-small: 650px;
+$h-break-large: 820px;
+
+
+@media screen and (max-width: $w-break-large) {
+  #top {
+    height: 400px;
   }
+
+  .col.banner {
+    margin-top: 14%;
+  }
+
+  .login_box {
+    left: 52%;
+    top: 56%;
+  }
+
+  .container.register {
+    margin-top: 12%;
+  }
+
+  .container.d-flex.flex-row {
+    margin-top: 80px;
+  }
+
+  .col-12 {
+   flex: 0 0 58%;
+  }
+
+  .menu, .cart, .customer-msg{
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: $w-break-small) {
+  .container.d-flex.flex-row {
+    visibility: hidden;
+  }
+  .row.align-items-center {
+    margin-top: -400px;
+  }
+}
+
+@media screen and (max-height:$h-break-large) {
+  .login_box {
+    position: fixed;
+    top: 56%;
+    left: 55%;
+  }
+  .btn-register button {
+    margin-top: -223px;
+    margin-left: 455px;
+  }
+  #top {
+    height:350px;
+  }
+  .container.register {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-height:$h-break-small) {
+
+  div#top {
+    visibility:hidden;
+  }
+
+  .col.banner {
+    margin-top: 14%;
+  }
+
+}
+
+
+body {
+  background-color: #FFE4BB;
+
 }

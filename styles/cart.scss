@@ -1,27 +1,32 @@
-.h4, h4,.h5 ,h5 {
-    font-size: 1rem;
+$table-size: 75%;
+
+
+.h4, h4, .h5, h5 {
+  font-size: 1rem;
 }
 
-.cart, .menu{
+
+.cart{
+    margin: 10px auto;
+    max-width: $table-size;
+    background: #EBECEE;
+    border-radius: 40px;
 
   > p {
     padding-top: 20px;
     text-align: center;
-    font-size:2em;
+    font-size: 2em;
   }
 }
 
-.p-2{
 
+.p-2 {
   background-color: #EBECEE;
   font-style: italic;
-
-  h5{
+  h5 {
     font-size: 2em;
     padding-top: 85px;
-
   }
-
   p {
     font-size: 1em;
     padding-top: 40px;
@@ -29,15 +34,28 @@
 }
 
 .container.d-flex.flex-row {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 button.btn.btn-default {
-    background-color: #E2FBF2;
+  background-color: #E2FBF2;
 }
 
+.customer-msg{
+    margin: 10px auto;
+    max-width: $table-size;
+    background: #E2FBF2;
+    border-radius: 40px;
+    visibility: hidden;
+  > div {
+    padding-bottom: 40px;
+  }
 
+}
 
-
+.no-border td {
+  font-size: 2em;
+  font-weight: bolder;
+}
 
 

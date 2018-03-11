@@ -27,7 +27,7 @@ h5.col-3{
   margin: auto;
 }
 
-container-fluid.photo {
+.container-fluid.photo {
     margin-top: 35px;
 }
 
@@ -38,10 +38,17 @@ form#register {
 button.redirect.row {
     border-radius: 22px;
     background: #FFE1D3;
-    /*box-shadow: 5px 3px #FFB99A;*/
 
-  :hover{
+  &:hover {
     box-shadow: 5px 3px #FFB99A;
   }
 }
 
+.col.banner {
+    position: absolute;
+    margin-top: 20%;
+    z-index: 1;
+  h2{
+    font-size: 3em;
+  }
+}
