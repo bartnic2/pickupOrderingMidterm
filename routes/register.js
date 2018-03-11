@@ -38,10 +38,19 @@ module.exports = (knex) => {
       email: req.body.email,
       password: req.body.password
     }
- 
-  dbFunctions.registerUser(customer)
+    dbFunctions.getAllCustomerData(customer.name)
+    .then(function(rows){
+      if(customer.name === rows[0].name)
+      console.log("username is already taken")
+    })
+    .catch(function(err){
+      dbFunctions.registerUser(customer)
+      res.redirect('/')
+      console.log("i can register")
+      console.log(err)
+    })
 
-    res.redirect('/')
+
   })
 
 
