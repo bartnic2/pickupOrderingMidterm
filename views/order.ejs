@@ -22,7 +22,7 @@
 
         <!-- add button js scripts -->
 
-
+          <script src="https://checkout.stripe.com/checkout.js"></script>
 
           <!-- Bootstrap requirements  -->
 
@@ -137,22 +137,6 @@
                                 </button>
                               </td>
                           </tr>
-
-<!--                         <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5></h5></td>
-                            <td class="text-right"><h5><strong></strong></h5></td>
-                        </tr> -->
-<!--                         <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5>Subtotal</h5></td>
-                            <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-                        </tr>
-                        <tr> -->
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
@@ -165,20 +149,9 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                            <div class="sender">
-                              <form action="/charge" method="POST">
-                                  <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                                    data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
-                                    data-amount="999"
-                                    data-name="Stripe.com"
-                                    data-description="Example charge"
-                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                    data-locale="auto"
-                                    data-zip-code="true">
-                                  </script>
-                              </form>
-                            <div>
+
+                              <button class="glyphicon glyphicon-play" id="customButton">Purchase</button>
+
                             </td>
                         </tr>
                   </tbody>
@@ -186,9 +159,6 @@
             </table>
 
         </div>
-
-
-
 
         <div class="col-4 login-box">
 

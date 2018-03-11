@@ -1,4 +1,39 @@
 $(document).ready(function() {
+  let total = 0;
+
+  //Stripe code (some modifications from website)
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_smuoXQ6EbRTtv8FGOfpbnhzc',
+    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+    locale: 'auto',
+    token: function(token) {
+      // You can access the token ID with `token.id`.
+      // Get the token ID to your server-side code for use.
+      $.post("/charge", token).done(function(res){
+        console.log(res);
+        $('#customButton').slideToggle();
+      })
+    }
+  });
+
+  document.getElementById('customButton').addEventListener('click', function(e) {
+    // Open Checkout with further options:
+    handler.open({
+      name: 'Demo Site',
+      description: '2 widgets',
+      currency: 'cad',
+      amount: total*100
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation:
+  window.addEventListener('popstate', function() {
+    handler.close();
+  });
+
+  //Code below manages the adding of items to the cart:
+
   //Food added will list hyphenated names of foods, used as classes that ID particular rows.
   let foodAdded = [];
   let tempFood1 = [];
@@ -6,7 +41,6 @@ $(document).ready(function() {
   let foodconcat = [];
 
   function setTotal(){
-    let total = 0;
     for(let fooditem of foodAdded){
       total += +$(`.${fooditem}`).find('.order-total').text().slice(1);
     }
@@ -44,7 +78,7 @@ $(document).ready(function() {
   }
 
   //user adding a food item to the food list from the menu page
- $(".add-button").on("click", function (event){
+  $(".add-button").on("click", function (event){
     event.preventDefault();
     let increment = 1;
     let cost = +$(this).closest('tr').find('.food-price').text();
@@ -69,9 +103,5 @@ $(document).ready(function() {
     }
 
   })
-
- $(".sender").on('click', function(event){
-  console.log("hello!!!");
- })
 
 })
