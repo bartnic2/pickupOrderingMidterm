@@ -53,6 +53,23 @@ exports.seed = function(knex, Promise) {
       return knex('items').insert(
         {id: 4, restaurant_id: 2, name: "Pepperoni Pizza", category: 'food', price: 7.00, image: 'image4', size: 'medium', description: 'A classic meal, made with deluxe tomato sauce, italian pepperoni, and mozzarella cheese'})
     })
+
+    .then(function(){
+      return knex('items').insert(
+        {id: 5, restaurant_id: 1, name: 'Mixed Greens Salad', category: 'drink', price: 8.00, image: 'image1', size: 'medium', description: 'Tomato, cucumbers, dried cranberries and hibiscus vinaigrette.'})
+    })
+    .then(function(){
+      return knex('items').insert(
+        {id: 6, restaurant_id: 1, name: "Codfish Fritters", category: 'food', price: 11.00, image: 'image2', size: 'medium', description: 'Creamy avocado dip'})
+    })
+    .then(function(){
+      return knex('items').insert(
+        {id: 7, restaurant_id: 1, name: "Ackee Tostones", category: 'food', price: 13.00, image: 'image3', size: 'large', description: 'Prime-rib steak with barbeque sauce and and helping of spicy fries'})
+    })
+    .then(function(){
+      return knex('items').insert(
+        {id: 8, restaurant_id: 1, name: "Quinoa Ital Stew", category: 'food', price: 17.00, image: 'image4', size: 'medium', description: 'Red beans stew, roasted pumpkin, quinoa and sweet plantains. Vegetarian.'})
+    })
     .then(function(){
       return knex('customer').insert(
         {name: "John Wayne", address: "3920 Sarsaparilla Lane", email_address: "johnW@gmail.com", password: "wayne1234", phone_number: "647-938-1002"}
