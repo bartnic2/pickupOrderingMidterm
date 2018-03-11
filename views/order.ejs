@@ -1,195 +1,60 @@
 <!DOCTYPE html>
 
-
 <html lang="en">
 
-    <head>
-          <!-- Required meta tags -->
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
 
-          <title>Go To town</title>
+    <% include ./partials/head %>
 
-          <!-- Bootstrap CSS -->
+  </head>
 
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-          <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-          <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/login_from.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
+  <body>
 
+      <% include ./partials/navbar %>
 
-        <!-- add button js scripts -->
+    <div>
 
-          <script src="https://checkout.stripe.com/checkout.js"></script>
+    <div>
 
-          <!-- Bootstrap requirements  -->
+      <% include ./partials/rest_info %>
 
+    </div>
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <div class="row align-items-center">
 
-          <script type="text/javascript" src="/vendor/jquery-3.2.1.js"></script>
+      <div class="col-12 menu">
 
-          <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <% include ./partials/rest_menu %>
 
-          <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
+      </div>
 
-          <script type="text/javascript" src="/scripts/app.js"></script>
-          <script type="text/javascript" src="/scripts/cart.js"></script>
+      <div class="col-12 cart">
 
+        <% include ./partials/order_cart %>
 
-    </head>
+      </div>
 
-    <body>
+      <div class="btn-top">
 
-        <div id="top">
-            <div class="container d-flex flex-row">
-                <img src="https://www.saratogarestaurants.com/buzz/wp-content/uploads/sites/60/2016/12/primediningroom.jpg" class="media-object img-thumbnail p-2 ">
-                  <div class="media-body p-2">
-                      <h5 class="mt-0 mb-1"><%=info.restaurantInfo.name%></h5>
-                      <p><%=info.restaurantInfo.description%></p>
-                      <p class='restaurant_email'><%=info.restaurantInfo.email_address%></p>
-                      <p class='restaurant_phone'><%=info.restaurantInfo.phone_number%></p>
-                  </div>
-            </div>
-        </div>
+        <a href="#top">
+          <button type="button"  class="btn btn-outline-primary btn-top">Back to top</button>
+        </a>
 
-        <div class="container-menu">
+    </div>
 
-            <div class="row">
-
-                <div class="col-sm-12 col-10">
-                    <p> MENU </p>
-                    <table class="table table-hover">
-
-                      <thead>
-                          <tr>
-
-                              <th>Name</th>
-                              <th class="text-center">Price</th>
-                              <th> </th>
-                          </tr>
-                      </thead>
-
-                      <tbody>
-                          <% for(let foodItem in info.foodmenu) { %>
-                          <tr>
-                              <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                  <div class="media-body">
-                                    <h5 class="media-heading food-name"><%= info.foodmenu[foodItem].name %></h5>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="col-sm-1 col-md-1 text-center food-price"><strong><%= info.foodmenu[foodItem].price %></strong></td>
-                              <td class="col-sm-1 col-md-1">
-                                <form   action="/restaurant/menu/add" method="POST" class="add-button">
-                                  <button  type="submit" class="add-button">
-                                    <span class="glyphicon glyphicon-remove"></span>Add
-                                  </button>
-                                </form>
-                              </td>
-                          </tr>
-                          <% }%>
-                      </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="container cart">
-
-            <p> CART </p>
-
-            <div class="row">
-
-                <div class="col-sm-12 col-10">
-                    <table class="table table-hover">
-                      <thead>
-                          <tr>
-                              <th>Product</th>
-                              <th>Quantity</th>
-                              <th class="text-center">Price</th>
-                              <th class="text-center">Total</th>
-                              <th> </th>
-                          </tr>
-                      </thead>
-                      <tbody class="cart-body">
-
-                          <tr class="order-line" style="visibility: hidden">
-                              <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h5 class="media-heading order-name">Empty</h5>
-                                    </div>
-                                </div>
-                              </td>
-
-                              <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="text" class="form-control order-quantity" value=''>
-                              </td>
-
-                              <td class="col-sm-1 col-md-1 text-center order-price"><strong></strong></td>
-
-                              <td class="col-sm-1 col-md-1 text-center order-total"><strong></strong></td>
-
-                              <td class="col-sm-1 col-md-1">
-                                <button type="button" class="remove-button">
-                                    <span class="glyphicon glyphicon-remove"></span> Remove
-                                </button>
-                              </td>
-                          </tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h3>Cart Total</h3></td>
-                            <td class="text-right cart-total"><h3><strong>$0</strong></h3></td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>
-
-                            <button class="glyphicon glyphicon-play" id="customButton">Purchase</button>
-
-                            </td>
-                        </tr>
-                  </tbody>
-
-            </table>
-
-        </div>
-
-        <div class="col-4 login-box">
-
-
-
-        <div class="col-4 login_box">
-
-          <% include ./partials/login_box %>
-
-        </div>
-
-            <div class="btn-top">
-                <button type="button"  class="btn btn-outline-primary btn-top"><a href="#top">Back to top</a></button>
-            </div>
-
-        </div>
-
-    </body>
-
+  </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
 
 
 

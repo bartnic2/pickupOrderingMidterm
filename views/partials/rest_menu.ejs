@@ -1,8 +1,9 @@
+
 <div class="container-menu">
 
-  <div class="row">
+  <div>
 
-    <div class="col">
+    <div class="menu">
 
       <h3> MENU </h3>
 
@@ -12,7 +13,7 @@
 
           <tr>
 
-              <th scope="col"><h5>Name</h5></th>
+              <th scope="col"><h5>Product</h5></th>
 
               <th scope="col"><h5>Descriptions</h5></th>
 
@@ -30,27 +31,26 @@
 
           <tr>
 
-            <th scope="row">
+            <th>
 
-              <h6><%= info.foodmenu[foodItem].name %></h6>
+              <h6 class="food-name"><%= info.foodmenu[foodItem].name %></h6>
 
             </th>
 
             <td><h6><%= info.foodmenu[foodItem].description %></h6></td>
 
-            <td><h6><%= info.foodmenu[foodItem].price %></h6></td>
+            <td><h6 class="food-price"><%= info.foodmenu[foodItem].price %></h6></td>
 
             <td>
 
-              <form   action="/restaurant/menu/add" method="POST" class="add-button">
 
-                <button  type="submit" class="add-button">
+                <button  class="add-button btn btn-lg btn-primary btn-block">
 
                   <span class="glyphicon glyphicon-remove"></span>Add
 
                 </button>
 
-              </form>
+
 
             </td>
 

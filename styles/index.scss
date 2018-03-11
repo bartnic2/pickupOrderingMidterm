@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Krona+One');
 
 #top {
-    margin-top: 60px;
+    margin-top: 20px;
     height: 500px;
     background: url(/img/snack.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 0.5;
-}
 
-#top > h2 {
+  > h2 {
   z-index: 1;
-
+  }
 }
 
 button > img {
@@ -38,4 +37,11 @@ form#register {
 
 button.redirect.row {
     border-radius: 22px;
+    background: #FFE1D3;
+    /*box-shadow: 5px 3px #FFB99A;*/
+
+  :hover{
+    box-shadow: 5px 3px #FFB99A;
+  }
 }
+

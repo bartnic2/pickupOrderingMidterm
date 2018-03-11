@@ -1,10 +1,10 @@
 <div class="container-menu">
 
-  <div class="row">
+  <div>
 
-    <div class="col">
+    <div class="cart">
 
-      <h3> MENU </h3>
+      <h3> CART </h3>
 
       <table class="table table-hover table-bordered">
 
@@ -12,27 +12,26 @@
 
           <tr>
 
-              <th>Product</th>
+              <th class="col-7"><h5>Product</h5></th>
 
               <th>Quantity</th>
 
-              <th class="text-center">Price</th>
+              <th class="col-2 text-center">Price</th>
 
-              <th class="text-center">Total</th>
+              <th class="col-2 text-center">Total</th>
 
-              <th> </th>
+              <th class="col-1"> </th>
 
           </tr>
 
         </thead>
 
-        <tbody>
+        <tbody class="cart-body">
 
           <tr class="order-line" style="visibility: hidden">
 
             <td >
 
-              <div >
 
                 <div >
 
@@ -40,22 +39,21 @@
 
                 </div>
 
-              </div>
             </td>
 
-            <td class="col-sm-1 col-md-1" style="text-align: center">
+            <td style="text-align: center">
 
                <input type="text" class="form-control order-quantity" value=''>
 
             </td>
 
-            <td class="col-sm-1 col-md-1 text-center order-price"><strong></strong></td>
+            <td class="text-center order-price"><strong></strong></td>
 
-            <td class="col-sm-1 col-md-1 text-center order-total"><strong></strong></td>
+            <td class=" text-center order-total"><strong></strong></td>
 
-            <td class="col-sm-1 col-md-1">
+            <td class="">
 
-              <button type="button" class="remove-button">
+              <button type="button" class="remove-button btn btn-lg btn-primary btn-block">
 
                   <span class="glyphicon glyphicon-remove"></span> Remove
 
@@ -65,7 +63,7 @@
 
           </tr>
 
-          <tr>
+          <tr class="Table-no-border">
 
             <td>   </td>
 
@@ -75,40 +73,7 @@
 
             <td><h3>Cart Total</h3></td>
 
-            <td class="text-right cart-total"><h3><strong>$0</strong></h3></td>
-
-          </tr>
-
-          <tr>
-
-            <td>   </td>
-
-            <td>   </td>
-
-            <td>   </td>
-
-            <td>   </td>
-
-            <td>
-
-              <button type="button" class="btn btn-default" action="/restaurant/menu/submit" method="POST">
-
-                <span class="glyphicon glyphicon-play stripe-button"></span>
-
-                <script
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                            data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                            data-amount="999"
-                            data-name="Stripe.com"
-                            data-description="Example charge"
-                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-locale="auto"
-                            data-zip-code="true">
-                </script>
-
-              </button>
-
-            </td>
+            <td class="text-text-right cart-total"><h3><strong>$0</strong></h3></td>
 
           </tr>
 
@@ -116,8 +81,13 @@
 
       </table>
 
+          <button class="glyphicon glyphicon-play" id="customButton">Purchase</button>
+
+
     </div>
 
   </div>
 
-</div>
+  </div>
+
+
