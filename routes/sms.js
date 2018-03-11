@@ -5,30 +5,27 @@
 
 //twilio number 1 647 699 7847
 
-
-const express = require('express');
-const router  = express();
-var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
-
-var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
-
-var twilio = require('twilio');
-var client = new twilio(accountSid, authToken);
 const http              = require('http');
+const express           = require('express');
+const router            = express();
+// const accountSid          = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+
+// const authToken           = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+
+// const twilio              = require('twilio');
+// const client              = new twilio(accountSid, authToken);
+
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 
 
 module.exports = (knex) => {
 
-
 //needs to respond to user if 
  // reactive response to restaurant
   router.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
-
-    
-
+console.log(req.body.Body)
     if (req.body.Body == 'number') {
       twiml.message('Customer will be by in number minutes');
     } else if(req.body.Body == 'Cancel') {

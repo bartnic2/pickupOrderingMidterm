@@ -8,7 +8,7 @@ const express         = require("express");
 const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
 const app             = express();
-const cookieParser    = require("cookie-parser");
+const cookieSession   = require('cookie-session');
 
 const knexConfig        = require("./knexfile");
 const knex              = require("knex")(knexConfig[ENV]);
@@ -20,23 +20,27 @@ const twilio            = require('twilio');
 const usersRoutes     = require("./routes/users");
 const homeRoutes      = require("./routes/homepage");
 const orderRoutes      = require("./routes/order");
-const confirmationRoutes     = require("./routes/confirmation");
 const registerRoutes  = require("./routes/register");
 const restOrderList   = require("./routes/restaurant-order-list");
 const restDashboard   = require("./routes/restaurant-dashboard");
 const sms             = require("./routes/sms");
 const login           = require("./routes/login");
-
+const randomString    = require("./public/scripts/random-string.js");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
-app.use(cookieParser())
-
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
+
+app.use(cookieSession({
+  name: "session",
+  keys: ["szvszd"],
+}))
+
 
 //use to replace POSTS with PUT and DELETE
 // app.use(methodOverride('_method'));
@@ -56,12 +60,11 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use(homeRoutes(knex));
 app.use(orderRoutes(knex));
-app.use(confirmationRoutes(knex));
-app.use(registerRoutes(knex));
+app.use(registerRoutes(knex, randomString));
 app.use(restOrderList(knex));
 app.use(restDashboard(knex));
 app.use(sms(knex));
-app.use(login(knex));
+app.use(login(knex, randomString));
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

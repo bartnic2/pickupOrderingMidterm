@@ -5,19 +5,7 @@ const router  = express.Router();
 const dbFunctions = require("./dbfunctions.js")
 //const users = require("")
 
-
-  //   let customer = {
-  //   name: "guy fieri",
-  //   address: "123 fake street",
-  //   phoneNumber: "452",
-  //   email: "whatever@email",
-  //   password: "secure"
-  // }
-
-
-
-
-module.exports = (knex) => {
+module.exports = (knex, randomString) => {
 
   //register page
   //needs html file
@@ -38,13 +26,18 @@ module.exports = (knex) => {
       email: req.body.email,
       password: req.body.password
     }
- 
-  dbFunctions.registerUser(customer)
-
-    res.redirect('/')
+    req.session.user_id = randomString()
+    dbFunctions.getAllCustomerData(customer.name)
+    .then(function(rows){
+      if(customer.name === rows[0].name)
+      console.log("username is already taken")
+    })
+    .catch(function(err){
+      dbFunctions.registerUser(customer)
+      res.redirect('/')
+      console.log(err)
+    })
   })
-
-
   return router;
 }
 

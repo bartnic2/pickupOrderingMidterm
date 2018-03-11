@@ -1,12 +1,11 @@
 
-var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+const accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
 
-var authToken = require('../routes/confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+const authToken = require('../../routes/confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
 
-var twilio = require('twilio');
-var client = new twilio(accountSid, authToken);
+const client = require('twilio')(accountSid, authToken);
 
- let twilio = {
+module.exports =  {
     //the two user functions can be turned into one
   // to user
     notifyOrderConfirmed: function (){
@@ -36,6 +35,6 @@ var client = new twilio(accountSid, authToken);
       })
       .then((message) => console.log(message.sid));
     }
-  }
+  
 }
-module.exports = twilio
+//      
