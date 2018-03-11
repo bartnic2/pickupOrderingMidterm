@@ -26,10 +26,6 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 // //twilio number 1 647 699 7847
 
 
-const http              = require('http');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
-
 
 
 module.exports = (knex) => {
