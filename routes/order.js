@@ -49,9 +49,15 @@ module.exports = (knex) => {
       }))
     .then(function(charge){
     let info = {values: charge};
-    console.log(charge);
     res.render("../views/charge.ejs", info)})
-  });
+  })
+
+  router.post("/orderinfo", (req, res) => {
+
+
+
+  })
+
 
   return router;
 }

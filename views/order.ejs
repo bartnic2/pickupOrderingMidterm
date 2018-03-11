@@ -8,7 +8,7 @@
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-          <title>Go To TOWN</title>
+          <title>Go To town</title>
 
           <!-- Bootstrap CSS -->
 
@@ -165,18 +165,20 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                            <form action="/charge" method="POST">
-                                <script
-                                  src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                                  data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
-                                  data-amount="999"
-                                  data-name="Stripe.com"
-                                  data-description="Example charge"
-                                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                  data-locale="auto"
-                                  data-zip-code="true">
-                                </script>
-                            </form>
+                            <div class="sender">
+                              <form action="/charge" method="POST">
+                                  <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                                    data-key="pk_test_smuoXQ6EbRTtv8FGOfpbnhzc"
+                                    data-amount="999"
+                                    data-name="Stripe.com"
+                                    data-description="Example charge"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="auto"
+                                    data-zip-code="true">
+                                  </script>
+                              </form>
+                            <div>
                             </td>
                         </tr>
                   </tbody>

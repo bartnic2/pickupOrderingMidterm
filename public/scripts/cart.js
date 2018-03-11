@@ -24,7 +24,6 @@ $(document).ready(function() {
     })
   }
 
-
   //Deleting a food item from your order list before it's submitted
   function setRemove(){
    $(".remove-button").on("click", function (event){
@@ -70,5 +69,9 @@ $(document).ready(function() {
     }
 
   })
+
+ $(".sender").on('click', function(event){
+  console.log("hello!!!");
+ })
 
 })
