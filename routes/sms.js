@@ -1,3 +1,4 @@
+
 //https://www.twilio.com/console/sms/getting-started/build/order-notifications
 //https://www.twilio.com/docs/libraries/node
 "use strict";
@@ -17,11 +18,28 @@ const router            = express();
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
+// //https://www.twilio.com/console/sms/getting-started/build/order-notifications
+// //https://www.twilio.com/docs/libraries/node
+// "use strict";
+//vary important, every time you restart ngrok need to update twilio account  with http and /sms
+//https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
+// //twilio number 1 647 699 7847
+
+// var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+
+// var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+
+// var twilio = require('twilio');
+// var client = new twilio(accountSid, authToken);
+// const http              = require('http');
+// const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
+
 
 
 module.exports = (knex) => {
 
-//needs to respond to user if 
+//needs to respond to user if
  // reactive response to restaurant
   router.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
