@@ -41,7 +41,6 @@ app.use(cookieSession({
   keys: ["szvszd"],
 }))
 
-
 //use to replace POSTS with PUT and DELETE
 // app.use(methodOverride('_method'));
 
