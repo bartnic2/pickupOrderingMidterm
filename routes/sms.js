@@ -1,8 +1,8 @@
 // //https://www.twilio.com/console/sms/getting-started/build/order-notifications
 // //https://www.twilio.com/docs/libraries/node
 // "use strict";
-
-
+//vary important, every time you restart ngrok need to update twilio account  with http and /sms
+//https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
 // //twilio number 1 647 699 7847
 
 // const express = require('express');
@@ -18,27 +18,27 @@
 
 
 
-// module.exports = (knex) => {
+module.exports = (knex) => {
 
-// //needs to respond to user if 
-//  // reactive response to restaurant
-//   router.post('/sms', (req, res) => {
-//     const twiml = new MessagingResponse();
-// console.log(req.body.Body)
-//     if (req.body.Body == 'number') {
-//       twiml.message('Customer will be by in number minutes');
-//     } else if(req.body.Body == 'Cancel') {
-//       twiml.message('Order cancelled');
-//     } else {
-//       twiml.message('No Body param match, Twilio sends this in the request to your server.');
-//     }
+//needs to respond to user if 
+ // reactive response to restaurant
+  router.post('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+console.log(req.body.Body)
+    if (req.body.Body == 'number') {
+      twiml.message('Customer will be by in number minutes');
+    } else if(req.body.Body == 'Cancel') {
+      twiml.message('Order cancelled');
+    } else {
+      twiml.message('No Body param match, Twilio sends this in the request to your server.');
+    }
 
-//     res.writeHead(200, {'Content-Type': 'text/xml'});
-//     res.end(twiml.toString());
-//   });
-// return router
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+  });
+return router
 
-// }
+}
 
 
 
