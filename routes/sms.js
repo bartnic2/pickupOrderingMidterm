@@ -1,45 +1,44 @@
-//https://www.twilio.com/console/sms/getting-started/build/order-notifications
-//https://www.twilio.com/docs/libraries/node
-"use strict";
+// //https://www.twilio.com/console/sms/getting-started/build/order-notifications
+// //https://www.twilio.com/docs/libraries/node
+// "use strict";
 
 
-//twilio number 1 647 699 7847
+// //twilio number 1 647 699 7847
 
-const http              = require('http');
-const express           = require('express');
-const router            = express();
-// const accountSid          = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+// const express = require('express');
+// const router  = express();
+// var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
 
-// const authToken           = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+// var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
 
-// const twilio              = require('twilio');
-// const client              = new twilio(accountSid, authToken);
-
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
+// var twilio = require('twilio');
+// var client = new twilio(accountSid, authToken);
+// const http              = require('http');
+// const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 
-module.exports = (knex) => {
 
-//needs to respond to user if 
- // reactive response to restaurant
-  router.post('/sms', (req, res) => {
-    const twiml = new MessagingResponse();
-console.log(req.body.Body)
-    if (req.body.Body == 'number') {
-      twiml.message('Customer will be by in number minutes');
-    } else if(req.body.Body == 'Cancel') {
-      twiml.message('Order cancelled');
-    } else {
-      twiml.message('No Body param match, Twilio sends this in the request to your server.');
-    }
+// module.exports = (knex) => {
 
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
-  });
-return router
+// //needs to respond to user if 
+//  // reactive response to restaurant
+//   router.post('/sms', (req, res) => {
+//     const twiml = new MessagingResponse();
+// console.log(req.body.Body)
+//     if (req.body.Body == 'number') {
+//       twiml.message('Customer will be by in number minutes');
+//     } else if(req.body.Body == 'Cancel') {
+//       twiml.message('Order cancelled');
+//     } else {
+//       twiml.message('No Body param match, Twilio sends this in the request to your server.');
+//     }
 
-}
+//     res.writeHead(200, {'Content-Type': 'text/xml'});
+//     res.end(twiml.toString());
+//   });
+// return router
+
+// }
 
 
 
