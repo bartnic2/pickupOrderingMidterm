@@ -1,7 +1,7 @@
 "use strict";
 
 require('dotenv').config();
-const http = require('http');
+
 const PORT            = process.env.PORT || 8080;
 const ENV             = process.env.ENV || "development";
 const express         = require("express");
@@ -10,6 +10,7 @@ const sass            = require("node-sass-middleware");
 const app             = express();
 const cookieSession   = require('cookie-session');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 
 const knexConfig        = require("./knexfile");
 const knex              = require("knex")(knexConfig[ENV]);

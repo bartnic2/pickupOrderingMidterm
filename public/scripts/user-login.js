@@ -4,23 +4,44 @@
 $(document).ready(function() {
 
   $('.test').on('click', function(event){
-    console.log('clicked');
-
     let info = {
       userName: $("#name").val(),
       password: $("#inputPassword").val()
     }
     event.preventDefault();
     $.post('/login', info).done(function(res){
-      if(res === "You have been signed in"){
-        $(".form-signin").slideUp()
-        $("div.container").append(`<h2>${res}</h2>`)
-      } else if (res === "invalid password"){
-        $(".form-signin-heading").text(res)
-      } else if (res === "invalid username") {
-        $(".form-signin-heading").text(res)
+      if(res === "invalid password"){
+        $(".messages").text(res);
+      }
+      else if (res === "invalid username"){
+        $(".messages").text(res);
+      }
+      else{
+        $(".login-form").slideUp();
+        $('.logout').css("visibility", "visible");
+        $(".messages").text(`${res}`);
       }
     })
 
   })
+
+  $.get('/login').done(function(res){
+    if(res !== "No User"){
+      $(".login-form").css("visibility", "hidden");
+      $(".login-form").slideUp();
+      $(".logout").css("visibility", "visible");
+      $(".messages").text(`${res}`);
+    }
+  })
+
+  $('.logout').on('click', function(event){
+    $.post('/logout').done(function(res){
+      $(".messages").text('');
+      $(".login-form").css("visibility", "visible");
+      $(".login-form").slideDown();
+      $(".logout").css("visibility", "hidden");
+    })
+  })
+
+
 })

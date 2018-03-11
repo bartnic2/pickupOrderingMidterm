@@ -34,27 +34,8 @@ module.exports = (knex) => {
     })
   })
 
-  // router.post("/charge", (req, res) => {
-  //   let amount = 500;
-  //   stripe.customers.create({
-  //      email: req.body.stripeEmail,
-  //     source: req.body.stripeToken
-  //   })
-  //   .then(customer =>
-  //     stripe.charges.create({
-  //       amount,
-  //       description: "Sample Charge",
-  //          currency: "usd",
-  //          customer: customer.id
-  //     }))
-  //   .then(function(charge){
-  //   let info = {values: charge};
-  //   res.send(charge.paid);
-  //   // res.render("../views/charge.ejs", info)
-  //   })
-  // })
-
   router.post("/charge", (req, res) => {
+
     console.log(req.body);
     sendText.notifyRestaurant(req.body)
 

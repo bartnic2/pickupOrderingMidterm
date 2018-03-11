@@ -51,6 +51,7 @@ $(document).ready(function() {
   //Code below manages the adding of items to the cart:
 
   function setTotal(){
+    total = 0;
     for(let fooditem of foodAdded){
       total += +$(`.${fooditem}`).find('.order-total').text().slice(1);
     }

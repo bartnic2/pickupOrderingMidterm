@@ -26,11 +26,11 @@ module.exports = (knex, randomString) => {
       email: req.body.email,
       password: req.body.password
     }
-    req.session.user_id = randomString()
+    req.session.user_name = customer.name;
     dbFunctions.getAllCustomerData(customer.name)
     .then(function(rows){
       if(customer.name === rows[0].name)
-      console.log("username is already taken")
+      console.log("Username is already taken")
     })
     .catch(function(err){
       dbFunctions.registerUser(customer)
