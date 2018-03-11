@@ -3,6 +3,14 @@
 
 $(document).ready(function() {
 
+  function preventDefault(){
+    $('form').on('submit', function(event){
+    event.preventDefault();
+  }
+  function enableDefault(){
+    $('form').unbind('submit');
+  }
+
   $('.test').on('click', function(event){
     let info = {
       userName: $("#name").val(),
@@ -41,6 +49,5 @@ $(document).ready(function() {
       $(".logout").css("visibility", "hidden");
     })
   })
-
 
 })

@@ -26,7 +26,8 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 // //twilio number 1 647 699 7847
 
 
-
+let data = {};
+let messageSent = false;
 
 module.exports = (knex) => {
 
@@ -55,6 +56,8 @@ module.exports = (knex) => {
       sendMessage.notifyOrderConfirmed("orderlist", pickupTime)
       res.writeHead(200, {'Content-Type': 'text/xml'});
       res.end(twiml.toString());
+      messageSent = true;
+      next('route');
     })
     .catch(function(err){
       //message to restaurant
@@ -64,5 +67,17 @@ module.exports = (knex) => {
       res.end(twiml.toString())
     })
   });
+
+  router.post("/charge", (req, res) => {
+
+  if(!messageSent){
+    console.log(req.body);
+    sendText.notifyRestaurant(req.body)
+  }
+    data = 'hello';
+    res.send(data);
+  });
+
+
 return router
 }
