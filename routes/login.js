@@ -30,8 +30,8 @@ module.exports = (knex, randomString) => {
   });
 
   router.post("/logout", (req, res) => {
-    res.clearCookie("user_name");
-    res.send("cleared");
+    req.session = null;
+    res.send("success");
   })
 
   return router;
