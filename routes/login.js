@@ -6,13 +6,11 @@ const dbData = require("./dbfunctions.js")
 module.exports = (knex, randomString) => {
 
   router.post("/login", (req, res) => {
-console.log(req.body.userName)
-console.log(req.body.password)
    dbData.getAllCustomerData(req.body.userName)
    .then(function(rows){
       if(rows[0].password === req.body.password){
-        req.session.user_id = randomString()
-        res.send("You have been signed in")
+        req.session.user_name = req.body.userName;
+        res.send(`Hello, ${req.body.userName}`)
       } else {
         res.send("invalid password")
       }
@@ -22,5 +20,19 @@ console.log(req.body.password)
       res.send("invalid username")
     })
   });
+
+  router.get("/login", (req, res) => {
+    if(req.session.user_name){
+      res.send(`Welcome back, ${req.session.user_name}`);
+    }else{
+      res.send("No User");
+    }
+  });
+
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.send("success");
+  })
+
   return router;
 }

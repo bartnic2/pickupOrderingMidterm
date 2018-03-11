@@ -1,3 +1,23 @@
+
+//https://www.twilio.com/console/sms/getting-started/build/order-notifications
+//https://www.twilio.com/docs/libraries/node
+"use strict";
+
+
+//twilio number 1 647 699 7847
+
+const http              = require('http');
+const express           = require('express');
+const router            = express();
+// const accountSid          = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+
+// const authToken           = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+
+// const twilio              = require('twilio');
+// const client              = new twilio(accountSid, authToken);
+
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 // //https://www.twilio.com/console/sms/getting-started/build/order-notifications
 // //https://www.twilio.com/docs/libraries/node
 // "use strict";
@@ -5,8 +25,6 @@
 //https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
 // //twilio number 1 647 699 7847
 
-const express = require('express');
-const router  = express();
 // var accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
 
 // var authToken = require('./confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
@@ -18,9 +36,10 @@ const router  = express();
 
 
 
+
 module.exports = (knex) => {
 
-//needs to respond to user if 
+//needs to respond to user if
  // reactive response to restaurant
   router.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
