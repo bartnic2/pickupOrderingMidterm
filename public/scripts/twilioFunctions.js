@@ -17,7 +17,7 @@ module.exports =  {
       .then((message) => console.log(message.sid));
     },
 
-    // to user
+    // to user, we may not use this
     notifyOrderDone: function () {
       client.messages.create({
           body: `Hi user, your order of orderlist is ready for pickup`,
@@ -34,7 +34,7 @@ module.exports =  {
       }
       client.messages.create({
           body: `Hi ${orderInfo.restaurant_email}, an order of ${orderList} has been placed by ${orderInfo.card.name}, please respond with the time it will take to prepare in minutes`,
-          to: '+14164522009',  // Text this restaurant number
+          to: `+1${orderInfo.restaurant_phone}`,  // Text this restaurant number replace with your own to test though
           from: '+16476997847' // From a valid Twilio number
       })
       .then((message) => console.log(message.sid));

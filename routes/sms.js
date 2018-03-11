@@ -25,7 +25,7 @@ module.exports = (knex) => {
 //right now will only find integers nad not string numbers
     let findTime = req.body.Body.match(/\d/g)
     let pickupTime = "";
-
+    console.log("this is the message body" + req.header)
     function cooktime(){
       return new Promise(function(resolve, reject){
         //condition1
@@ -40,7 +40,6 @@ module.exports = (knex) => {
       twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
       //message to customer
       sendMessage.notifyOrderConfirmed("orderlist", pickupTime)
-      console.log("result " + result)
       res.writeHead(200, {'Content-Type': 'text/xml'});
       res.end(twiml.toString());
     })
@@ -53,6 +52,5 @@ module.exports = (knex) => {
     })
   });
 return router
-
 }
 

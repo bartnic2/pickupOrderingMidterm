@@ -60,7 +60,5 @@ module.exports = (knex) => {
 
     res.send('hello');
   })
-
-
   return router;
 }
