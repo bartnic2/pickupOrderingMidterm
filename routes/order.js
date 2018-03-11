@@ -35,7 +35,8 @@ module.exports = (knex) => {
 
   router.post("/charge", (req, res) => {
 
-
+    req.body.restaurant_phone
+    req.body.order
     console.log(req.body);
     res.send('hello');
   })

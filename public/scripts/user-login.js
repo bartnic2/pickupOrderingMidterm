@@ -18,7 +18,7 @@ $(document).ready(function() {
       }
       else{
         $(".login-form").slideUp();
-        $('.logout').slideDown();
+        $('.logout').css("visibility", "visible");
         $(".messages").text(`${res}`);
       }
     })
@@ -27,7 +27,9 @@ $(document).ready(function() {
 
   $.get('/login').done(function(res){
     if(res !== "No User"){
-      $(".login-form").slideUp()
+      $(".login-form").css("visibility", "hidden");
+      $(".login-form").slideUp();
+      $(".logout").css("visibility", "visible");
       $(".messages").text(`${res}`);
     }
   })
@@ -35,8 +37,9 @@ $(document).ready(function() {
   $('.logout').on('click', function(event){
     $.post('/logout').done(function(res){
       $(".messages").text('');
+      $(".login-form").css("visibility", "visible");
       $(".login-form").slideDown();
-      $(".logout").slideUp();
+      $(".logout").css("visibility", "hidden");
     })
   })
 
