@@ -51,10 +51,6 @@ module.exports = (knex) => {
       res.writeHead(200, {'Content-Type': 'text/xml'});
       res.end(twiml.toString())
     })
-
-
-
-    console.log(pickupTime)
   });
 return router
 

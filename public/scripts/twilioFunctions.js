@@ -28,14 +28,12 @@ module.exports =  {
     },
     //to restaurant
     notifyRestaurant: function(orderInfo){
-      console.log("ddddddddorder info id "+orderInfo)
-      let orderList= "";
-      for(let name of orderInfo.order){
-        orderList += orderInfo.order[name] + name,
+      let orderList = "";
+      for(let name in orderInfo.order){
+        orderList += `${orderInfo.order[name]} ${name}, `;
       }
-      console.log("food items " + orderList)
       client.messages.create({
-          body: `Hi ${orderInfo.restaurant_email}, an order of ${orderlist} has been placed by ${orderInfo.card.name}, please respond with the time in it will take in minutes to prepare`,
+          body: `Hi ${orderInfo.restaurant_email}, an order of ${orderList} has been placed by ${orderInfo.card.name}, please respond with the time it will take to prepare in minutes`,
           to: '+14164522009',  // Text this restaurant number
           from: '+16476997847' // From a valid Twilio number
       })
