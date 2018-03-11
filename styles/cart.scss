@@ -1,0 +1,43 @@
+.h4, h4,.h5 ,h5 {
+    font-size: 1rem;
+}
+
+.cart, .menu{
+
+  > p {
+    padding-top: 20px;
+    text-align: center;
+    font-size:2em;
+  }
+}
+
+.p-2{
+
+  background-color: #EBECEE;
+  font-style: italic;
+
+  h5{
+    font-size: 2em;
+    padding-top: 85px;
+
+  }
+
+  p {
+    font-size: 1em;
+    padding-top: 40px;
+  }
+}
+
+.container.d-flex.flex-row {
+    margin-top: 60px;
+}
+
+button.btn.btn-default {
+    background-color: #E2FBF2;
+}
+
+
+
+
+
+

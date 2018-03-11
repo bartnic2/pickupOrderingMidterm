@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <% include ./partials/head %>
+
+  </head>
+
+  <body>
+
+    <% include ./partials/navbar %>
+
+    <div class="container-fluid"  id="top">
+
+      <div class="col">
+
+        <h2 class="text-center" >Order From Local Restaurants You Love</h2>
+
+      </div>
+
+    </div>
+
+    <div class="container-fluid photo" >
+
+      <div class="row">
+
+        <div class="col-6">
+
+          <% for (let restaurant in info) {%>
+
+            <form class="restaurant" id="register" method="GET" action="/restaurant/<%=info[restaurant].id%>/menu">
+
+              <button class="redirect row" type="submit">
+
+                <img class="col-4 rounded-circle" src='<%=info[restaurant].image%>' alt="Generic placeholder image">
+
+                <h5 class="col-3 "> <%= [restaurant] %></h5>
+
+                <div class="col-5"> <%= info[restaurant].description %></div>
+
+              </button>
+
+            </form>
+
+          <%} %>
+
+        </div>
+
+        <div class="col-4 login_box">
+
+          <% include ./partials/login_box %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <% include ./partials/bootstrap %>
+
+  </body>
+
+</html>
+
