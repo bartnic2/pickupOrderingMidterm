@@ -3,7 +3,7 @@ const router  = express.Router();
 const dbData = require("./dbfunctions.js")
 
 
-module.exports = (knex) => {
+module.exports = (knex, randomString) => {
 
   router.post("/login", (req, res) => {
 console.log(req.body.userName)
@@ -11,6 +11,7 @@ console.log(req.body.password)
    dbData.getAllCustomerData(req.body.userName)
    .then(function(rows){
       if(rows[0].password === req.body.password){
+        req.session.user_id = randomString()
         res.send("You have been signed in")
       } else {
         res.send("invalid password")
@@ -23,4 +24,3 @@ console.log(req.body.password)
   });
   return router;
 }
-

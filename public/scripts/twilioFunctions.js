@@ -37,12 +37,4 @@ module.exports =  {
     }
   
 }
-//      function notifyOrderDone () {
-//       client.messages.create({
-//           body: `Hi user, your order of orderlist is ready for pickup`,
-//           to: '+14164522009',  // Text this users number
-//           from: '+16476997847' // From a valid Twilio number
-//       })
-//       .then((message) => console.log(message.sid));
-//     }
-// notifyOrderDone()
+//      
