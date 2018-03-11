@@ -20,8 +20,11 @@ const knex              = require("knex")(knexConfig[ENV]);
 const morgan            = require('morgan');
 const knexLogger        = require('knex-logger');
 const twilio            = require('twilio');
+<<<<<<< HEAD
 
 // const stripe            = require('')
+=======
+>>>>>>> 04678f4189e04a47486e57056226c50b03ae099f
 
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
