@@ -1,6 +1,9 @@
 
 //https://www.twilio.com/console/sms/getting-started/build/order-notifications
 //https://www.twilio.com/docs/libraries/node
+//vary important, every time you restart ngrok need to update twilio account  with http and /sms
+//https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
+
 "use strict";
 
 
@@ -17,20 +20,7 @@ const router            = express();
 // const client              = new twilio(accountSid, authToken);
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
-// //https://www.twilio.com/console/sms/getting-started/build/order-notifications
-// //https://www.twilio.com/docs/libraries/node
-// "use strict";
-//vary important, every time you restart ngrok need to update twilio account  with http and /sms
-//https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
-// //twilio number 1 647 699 7847
-
-
-const http              = require('http');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
-
-
+const sendMessage = require('../public/scripts/twilioFunctions')
 
 module.exports = (knex) => {
 
