@@ -1,7 +1,7 @@
 "use strict";
 
 require('dotenv').config();
-
+const http = require('http');
 const PORT            = process.env.PORT || 8080;
 const ENV             = process.env.ENV || "development";
 const express         = require("express");
@@ -9,6 +9,7 @@ const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
 const app             = express();
 const cookieSession   = require('cookie-session');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const knexConfig        = require("./knexfile");
 const knex              = require("knex")(knexConfig[ENV]);
@@ -65,6 +66,28 @@ app.use(restOrderList(knex));
 app.use(restDashboard(knex));
 app.use(sms(knex));
 app.use(login(knex, randomString));
+
+const accountSid = 'AC76eb6ee8590a47c08cd0564696b08a95'; // Your Account SID from www.twilio.com/console
+
+const authToken = require('./routes/confidential.js').twilioToken;   // Your Auth Token from www.twilio.com/console
+
+const client = require('twilio')(accountSid, authToken);
+
+
+
+
+
+app.post('/sms', (req, res) => {
+console.log(req.body)
+ const twiml = new MessagingResponse();
+
+  twiml.message('The Robots are coming! Head for the hills!');
+
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.end(twiml.toString());
+});
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
