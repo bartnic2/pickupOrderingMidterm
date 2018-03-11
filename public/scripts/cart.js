@@ -1,5 +1,11 @@
 $(document).ready(function() {
   let total = 0;
+  //Food added will list hyphenated names of foods, used as classes that ID particular rows.
+  let foodAdded = [];
+  let tempFood1 = [];
+  let tempFood2 = [];
+  let foodconcat = [];
+  let finalOrder = {};
 
   //Stripe code (some modifications from website)
   var handler = StripeCheckout.configure({
@@ -9,9 +15,19 @@ $(document).ready(function() {
     token: function(token) {
       // You can access the token ID with `token.id`.
       // Get the token ID to your server-side code for use.
+      // You can ONLY send the token, so to include restaurant data, you need to add it manually.
+      // Also, the tokens object won't accept objects as values.
+      token.order = {};
+      for(let foodname of foodAdded){
+        token.order[foodname] = +$(`.${foodname}`).find('.order-quantity').val();
+      }
+      token['restaurant_email'] = $('.restaurant_email').text();
+      token['restaurant_phone'] = $('.restaurant_phone').text();
+
       $.post("/charge", token).done(function(res){
         console.log(res);
         $('#customButton').slideToggle();
+
       })
     }
   });
@@ -25,20 +41,14 @@ $(document).ready(function() {
       amount: total*100
     });
     e.preventDefault();
+
   });
 
   // Close Checkout on page navigation:
   window.addEventListener('popstate', function() {
     handler.close();
   });
-
   //Code below manages the adding of items to the cart:
-
-  //Food added will list hyphenated names of foods, used as classes that ID particular rows.
-  let foodAdded = [];
-  let tempFood1 = [];
-  let tempFood2 = [];
-  let foodconcat = [];
 
   function setTotal(){
     for(let fooditem of foodAdded){
@@ -50,7 +60,6 @@ $(document).ready(function() {
 
   function setChange(){
     $('.order-quantity').on('change', function (event){
-      console.log('hello');
       let newquant = +$(this).val();
       let price = +$(this).closest('tr').find('.order-price').text().slice(1);
       $(this).closest('tr').find('.order-total').text(`$${price*newquant}`);
@@ -80,7 +89,6 @@ $(document).ready(function() {
   //user adding a food item to the food list from the menu page
   $(".add-button").on("click", function (event){
     event.preventDefault();
-    let increment = 1;
     let cost = +$(this).closest('tr').find('.food-price').text();
     let name = $(this).closest('tr').find('.food-name').text();
     let ordername = $('.cart-body').find('.order-name').text();
@@ -94,14 +102,10 @@ $(document).ready(function() {
       newline.find('.order-quantity').val(1);
       newline.find('.order-total').text(`$${cost}`);
       newline.prependTo('.cart-body');
-      increment++;
       foodAdded.push(noSpaceName);
-
       setChange();
       setRemove();
       setTotal();
     }
-
   })
-
 })

@@ -54,6 +54,9 @@ module.exports = (knex) => {
   // })
 
   router.post("/charge", (req, res) => {
+
+
+    console.log(req.body);
     res.send('hello');
   })
 
