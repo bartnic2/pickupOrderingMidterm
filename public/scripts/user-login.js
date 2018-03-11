@@ -19,6 +19,7 @@ $(document).ready(function() {
       else{
         $(".login-form").slideUp();
         $('.logout').css("visibility", "visible");
+        $(".btn-register").css("visibility", "hidden");
         $(".messages").text(`${res}`);
       }
     })
@@ -28,6 +29,7 @@ $(document).ready(function() {
   $.get('/login').done(function(res){
     if(res !== "No User"){
       $(".login-form").css("visibility", "hidden");
+      $(".btn-register").css("visibility", "hidden");
       $(".login-form").slideUp();
       $(".logout").css("visibility", "visible");
       $(".messages").text(`${res}`);
@@ -38,6 +40,7 @@ $(document).ready(function() {
     $.post('/logout').done(function(res){
       $(".messages").text('');
       $(".login-form").css("visibility", "visible");
+      $(".btn-register").css("visibility", "visible");
       $(".login-form").slideDown();
       $(".logout").css("visibility", "hidden");
     })
