@@ -82,18 +82,6 @@ const client = require('twilio')(accountSid, authToken);
 
 
 
-
-client.messages
-  .create({
-    to: '+14164522009',
-    from: '+16476997847',
-    body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-  })
-  .then(message => console.log(message.sid));
-
-
-
-
 app.post('/sms', (req, res) => {
 console.log(req.body)
  const twiml = new MessagingResponse();
