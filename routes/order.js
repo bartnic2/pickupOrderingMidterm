@@ -47,7 +47,10 @@ module.exports = (knex) => {
            currency: "usd",
            customer: customer.id
       }))
-    .then(charge => res.render("../views/charge.ejs"));
+    .then(function(charge){
+    let info = {values: charge};
+    console.log(charge);
+    res.render("../views/charge.ejs", info)})
   });
 
   return router;

@@ -68,10 +68,7 @@ $(document).ready(function() {
       setRemove();
       setTotal();
     }
-    // $.post("/restaurant/menu/add?_method=PUT", {price: cost})
-    // .done(function(res){
-    //   console.log(res);
-    // })
+
   })
 
 })
