@@ -10,6 +10,7 @@
 
 //twilio number 1 647 699 7847
 
+const sendText          = require("../public/scripts/twilioFunctions.js")
 const http              = require('http');
 const express           = require('express');
 const router            = express();
@@ -24,16 +25,10 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const sendMessage = require('../public/scripts/twilioFunctions')
 const dbFunctions = require('./dbfunctions.js')
 
-
+let currentUser;
 let data = "empty";
 
-dbFunctions.getAllCustomerData('q').then(function(res){
-  console.log(res);
-  console.log(res[0].phone_number);
-})
-
 module.exports = (knex) => {
-
 
 router.get('/data', (req, res) => {
  res.send(data)
@@ -64,16 +59,12 @@ router.get('/data', (req, res) => {
      data = pickupTime;
      twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
      //message to customer
-
-    dbFunctions.getAllCustomerData('q').then(function(rows){
-
+     console.log("Current user on response", currentUser);
+    dbFunctions.getAllCustomerData(currentUser).then(function(rows){
        let phone = rows[0].phone_number;
        sendMessage.notifyOrderConfirmed(phone, pickupTime);
     })
-
-
      res.writeHead(200, {'Content-Type': 'text/xml'});
-     next('route');
      res.end(twiml.toString());
    })
    .catch(function(err){
@@ -87,7 +78,9 @@ router.get('/data', (req, res) => {
 
  router.post('/charge', (req, res) => {
     sendText.notifyRestaurant(req.body)
-    res.send(data);
-});
+    currentUser = req.body.new_user;
+    res.send(req.body);
+  });
+
 return router
 }

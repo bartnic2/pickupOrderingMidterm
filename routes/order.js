@@ -22,6 +22,8 @@ module.exports = (knex) => {
       dbData.getRestaurantData(req.params.id).then(function(rows){
         templateVars.restaurantInfo = rows[0];
         templateVars.restaurantInfo.id = req.params.id;
+        templateVars.userName = req.session.user_name
+        console.log(req.session.user_name)
       }),
       dbData.getAllRestaurantItems(req.params.id).then(function(rows){
         for(let i = 0; i < rows.length; i++) {
@@ -32,11 +34,6 @@ module.exports = (knex) => {
     ]).then(function(){
       res.render('../views/order.ejs', {info:templateVars});
     })
-  })
-
-  router.post("/charge", (req, res) => {
-    console.log("charge is receiving");
-    sendText.notifyRestaurant(req.body)
   })
 
   return router;

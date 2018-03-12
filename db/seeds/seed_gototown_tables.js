@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
     ])
     .then(function(){
       return knex('restaurant').insert(
-        {id: 1, name: "Fresh on Spadina", email_address: "info@freshrestaurants.ca", password: "spadina", address: "147 Spadina Ave, Toronto, ON", phone_number: "5198659270", image: 'img/Fresh on Spadina.jpeg', description: "A large menu of modern vegetarian & vegan dishes, plus made-to-order juices, in a lively eatery."})
+        {id: 1, name: "Fresh on Spadina", email_address: "info@freshrestaurants.ca", password: "spadina", address: "147 Spadina Ave, Toronto, ON", phone_number: "4164522009", image: 'img/Fresh on Spadina.jpeg', description: "A large menu of modern vegetarian & vegan dishes, plus made-to-order juices, in a lively eatery."})
     })
     .then(function(){
       return knex('restaurant').insert(

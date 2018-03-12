@@ -7,32 +7,35 @@ $(document).ready(function() {
   let tempFood2 = [];
   let foodconcat = [];
   let finalOrder = {};
+  let user = $('.user').text();
   let data = "empty";
+  console.log("INITIAL USER", user);
 
   function getData(){
     $.get("/data").done(function(res){
-      data = res;
-      console.log(data);
-      if(data === 'empty'){
-        setTimeout(getData, 3000);
-      } else {
-        var today = new Date()
-        var hours = today.getHours()
-        let amPm = "am"
-        var minutes = today.getMinutes() + parseInt(data)
-        if(minutes > 60) {
-          hours += 1
-          minutes -= 59
+        $('.customer-msg').css("visibility", "visible");
+        data = res;
+        if(data === 'empty'){
+          setTimeout(getData, 3000);
+        } else {
+        let timeLeft = Number(data)
+        console.log("data:", data);
+        console.log("timeleft", timeLeft);
+        deliveryTime();
+         function deliveryTime(){
+           let time = `Your order will be available in ${timeLeft} minutes`;
+           $('#pickup_time').text(time)
+             timeLeft -= 1
+             if(timeLeft >= 0){
+               setTimeout(deliveryTime, 60000);
+             }else{
+              $('#pickup_time').text("Your order is ready!");
+             }
+           }
         }
-        if (hours > 12) {
-          hours -= 12
-          amPm = "pm"
-        }
-        let time = `Your pick up will be available at ${hours}:${minutes} ${amPm}`
-        $('#pickup_time').text(time)
-      }
-    })
-  }
+      })
+    }
+
 
   //Stripe code (some modifications from website)
   var handler = StripeCheckout.configure({
@@ -52,11 +55,14 @@ $(document).ready(function() {
       }
       token['restaurant_email'] = $('.restaurant_email').text();
       token['restaurant_phone'] = $('.restaurant_phone').text();
+      token['new_user'] = user;
 
-      $.post("/charge", token).done(function (res){})
+      $.post("/charge", token).done(function (res){
+        console.log(res);
+      })
+
       getData();
-
-    }
+      }
   });
 
   document.getElementById('customButton').addEventListener('click', function(e) {
