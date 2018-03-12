@@ -42,6 +42,6 @@ $(document).ready(function() {
       $(".logout").css("visibility", "hidden");
     })
   })
-
+   $("#confirmation-window").slideUp(1000); 
 
 })

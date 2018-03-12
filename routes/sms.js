@@ -59,7 +59,6 @@ router.get('/data', (req, res) => {
       //message to customer
       sendMessage.notifyOrderConfirmed("orderlist", pickupTime);
       res.writeHead(200, {'Content-Type': 'text/xml'});
-      messageSent = true;
       next('route');
       res.end(twiml.toString());
     })
@@ -73,13 +72,7 @@ router.get('/data', (req, res) => {
   });
 
   router.post("/charge", (req, res) => {
-
-   if(!messageSent){
-     console.log(req.body);
      sendText.notifyRestaurant(req.body)
-   }
-     data = 'hello';
-     console.log("i hope im wokrign");
      res.send(data);
  });
 return router
