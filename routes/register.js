@@ -22,8 +22,8 @@ module.exports = (knex, randomString) => {
     let customer = {
       name: req.body.name,
       address: req.body.address,
-      phoneNumber: req.body.phone,
-      email: req.body.email,
+      phone_number: req.body.phone,
+      email_address: req.body.email,
       password: req.body.password
     }
     req.session.user_name = customer.name;

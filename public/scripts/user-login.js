@@ -3,15 +3,11 @@
 
 $(document).ready(function() {
 
-  function preventDefault(){
-    $('form').on('submit', function(event){
+  $('.restaurant').on('submit', function(event){
     event.preventDefault();
-  }
-  function enableDefault(){
-    $('form').unbind('submit');
-  }
+  });
 
-  $('.test').on('click', function(event){
+  $('.signin').on('click', function(event){
     let info = {
       userName: $("#name").val(),
       password: $("#inputPassword").val()
@@ -28,6 +24,7 @@ $(document).ready(function() {
         $(".login-form").slideUp();
         $('.logout').css("visibility", "visible");
         $(".messages").text(`${res}`);
+        $('.restaurant').unbind('submit');
       }
     })
   })
@@ -38,6 +35,7 @@ $(document).ready(function() {
       $(".login-form").slideUp();
       $(".logout").css("visibility", "visible");
       $(".messages").text(`${res}`);
+      $('.restaurant').unbind('submit');
     }
   })
 
@@ -47,7 +45,13 @@ $(document).ready(function() {
       $(".login-form").css("visibility", "visible");
       $(".login-form").slideDown();
       $(".logout").css("visibility", "hidden");
+      $('.restaurant').on('submit', function(event){
+        event.preventDefault();
+      });
     })
   })
+
+
+
 
 })
