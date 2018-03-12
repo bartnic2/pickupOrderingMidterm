@@ -1,0 +1,22 @@
+$table-size: 75%;
+
+.h3, h3 {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+.menu {
+  margin: 10px auto;
+  max-width: $table-size;
+  background: #E2FBF2;
+  border-radius: 40px;
+
+  > p {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 2em;
+  }
+}
+.menu th:nth-child(1){
+    width: 180px;
+}
