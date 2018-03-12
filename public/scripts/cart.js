@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   let total = 0;
   //Food added will list hyphenated names of foods, used as classes that ID particular rows.
   let foodAdded = [];
@@ -6,6 +7,32 @@ $(document).ready(function() {
   let tempFood2 = [];
   let foodconcat = [];
   let finalOrder = {};
+  let data = "empty";
+
+  function getData(){
+    $.get("/data").done(function(res){
+      data = res;
+      console.log(data);
+      if(data === 'empty'){
+        setTimeout(getData, 3000);
+      } else {
+        var today = new Date()
+        var hours = today.getHours()
+        let amPm = "am"
+        var minutes = today.getMinutes() + parseInt(data)
+        if(minutes > 60) {
+          hours += 1
+          minutes -= 59
+        }
+        if (hours > 12) {
+          hours -= 12
+          amPm = "pm"
+        }
+        let time = `Your pick up will be available at ${hours}:${minutes} ${amPm}`
+        $('#pickup_time').text(time)
+      }
+    })
+  }
 
   //Stripe code (some modifications from website)
   var handler = StripeCheckout.configure({
@@ -17,6 +44,8 @@ $(document).ready(function() {
       // Get the token ID to your server-side code for use.
       // You can ONLY send the token, so to include restaurant data, you need to add it manually.
       // Also, the tokens object won't accept objects as values.
+
+      //$() slide toggle down for purchase
       token.order = {};
       for(let foodname of foodAdded){
         token.order[foodname] = +$(`.${foodname}`).find('.order-quantity').val();
@@ -25,21 +54,8 @@ $(document).ready(function() {
       token['restaurant_phone'] = $('.restaurant_phone').text();
 
       $.post("/charge", token).done(function (res){})
-      let run = true;
-      let data = "empty";
-      while(data === "empty"){
-        if (run) {
-          setTimeout(getData(), 10000);
-          run = false;
-        }
-      }
-      function getData(){
-        $.get("/data").done(function(res){
-          data = res;
-          console.log(data)
-          run = true
-        })
-      }
+      getData();
+
     }
   });
 
@@ -120,4 +136,5 @@ $(document).ready(function() {
       setTotal();
     }
   })
+   $("#confirmation-window").slideUp(1000);
 })

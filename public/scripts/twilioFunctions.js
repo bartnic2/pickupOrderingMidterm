@@ -10,7 +10,7 @@ module.exports =  {
   // to user
     notifyOrderConfirmed: function (orderlist, pickupTime){
       client.messages.create({
-          body: `Hi , your order for orderlist has been received and will be ready for pickup in ${pickupTime} minutes`,
+          body: `Hi, your order has been received and will be ready for pickup in ${pickupTime} minutes`,
           to: '+14164522009',  // Text this users number
           from: '+16476997847' // From a valid Twilio number
       })
@@ -35,7 +35,7 @@ module.exports =  {
       console.log("order list " + orderList)
       client.messages.create({
           body: `Hi ${orderInfo.restaurant_email}, an order of ${orderList} has been placed by ${orderInfo.card.name}, please respond with the time it will take to prepare in minutes`,
-          to: `+14164522009`,  // Text this restaurant number replace with your own to test though${orderInfo.restaurant_phone}
+          to: `+1${orderInfo.restaurant_phone}`,  // Text this restaurant number replace with your own to test though${orderInfo.restaurant_phone}
           from: '+16476997847' // From a valid Twilio number
       })
       .then((message) => console.log(message.sid));

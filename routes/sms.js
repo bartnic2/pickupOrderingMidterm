@@ -59,7 +59,6 @@ module.exports = (knex) => {
       sendMessage.notifyOrderConfirmed("orderlist", pickupTime);
       res.writeHead(200, {'Content-Type': 'text/xml'});
       res.end(twiml.toString());
-      next('route');
     })
     .catch(function(err){
       //message to restaurant
