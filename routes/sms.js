@@ -5,7 +5,7 @@
 //https://www.twilio.com/docs/quickstart/node/programmable-sms#allow-twilio-to-talk-to-your-nodejs-application-with-ngrok
 // twilio parameters
 //https://www.twilio.com/docs/api/twiml/sms/overview#generating-twiml-with-the-twilio-helper-libraries
-"use strict";
+'use strict';
 
 
 //twilio number 1 647 699 7847
@@ -22,53 +22,72 @@ const router            = express();
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const sendMessage = require('../public/scripts/twilioFunctions')
+const dbFunctions = require('./dbfunctions.js')
+
 
 let data = "empty";
 
+dbFunctions.getAllCustomerData('q').then(function(res){
+  console.log(res);
+  console.log(res[0].phone_number);
+})
+
 module.exports = (knex) => {
 
-  router.get('/data', (req, res) => {
-    console.log(req.session.user_name);
-    res.send(data)
-  })
+
+router.get('/data', (req, res) => {
+ res.send(data)
+})
 
 //needs to respond to user if
- // reactive response to restaurant
- //if we have time add a response to "cancel from restaurant"
-  router.post('/sms', (req, res, next) => {
+// reactive response to restaurant
+//if we have time add a response to 'cancel from restaurant'
+ router.post('/sms', (req, res, next) => {
 
-    const twiml = new MessagingResponse();
+   const twiml = new MessagingResponse();
 //right now will only find integers nad not string numbers
 
-    let findTime = req.body.Body.match(/\d/g)
-    let pickupTime = "";
-    console.log("this is the message body" + req.body.From)
-    function cooktime(){
-      return new Promise(function(resolve, reject){
-        //condition1
-        for (let num of findTime){
-         pickupTime += num;
-      }
-        return resolve(pickupTime)
-      })
-    }
-    cooktime().then(function(result){
-      //message to restaurant
-      data = pickupTime;
-      twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
-      //message to customer
-      sendMessage.notifyOrderConfirmed("orderlist", pickupTime);
-      res.writeHead(200, {'Content-Type': 'text/xml'});
-      res.end(twiml.toString());
-    })
-    .catch(function(err){
-      //message to restaurant
-      twiml.message(`Please reply with a valid pickup time in minutes`);
-      console.log(err)
-      res.writeHead(200, {'Content-Type': 'text/xml'});
-      res.end(twiml.toString())
-    })
-  });
+   let findTime = req.body.Body.match(/\d/g)
+   let pickupTime = '';
+   console.log('this is the message body' + req.body.From)
+   function cooktime(){
+     return new Promise(function(resolve, reject){
+       //condition1
+       for (let num of findTime){
+        pickupTime += num;
+     }
+       return resolve(pickupTime)
+     })
+   }
+   cooktime().then(function(result){
+     //message to restaurant
+     data = pickupTime;
+     twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
+     //message to customer
 
+    dbFunctions.getAllCustomerData('q').then(function(rows){
+
+       let phone = rows[0].phone_number;
+       sendMessage.notifyOrderConfirmed(phone, pickupTime);
+    })
+
+
+     res.writeHead(200, {'Content-Type': 'text/xml'});
+     next('route');
+     res.end(twiml.toString());
+   })
+   .catch(function(err){
+     //message to restaurant
+     twiml.message(`Please reply with a valid pickup time in minutes`);
+     console.log(err)
+     res.writeHead(200, {'Content-Type': 'text/xml'});
+     res.end(twiml.toString())
+   })
+ });
+
+ router.post('/charge', (req, res) => {
+    sendText.notifyRestaurant(req.body)
+    res.send(data);
+});
 return router
 }

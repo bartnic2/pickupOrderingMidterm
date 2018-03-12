@@ -10,6 +10,7 @@ module.exports = (knex, randomString) => {
    .then(function(rows){
       if(rows[0].password === req.body.password){
         req.session.user_name = req.body.userName;
+        console.log("Login req user name", req.session.user_name);
         res.send(`Hello, ${req.body.userName}`)
       } else {
         res.send("invalid password")
