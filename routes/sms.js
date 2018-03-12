@@ -28,6 +28,7 @@ let data = "empty";
 module.exports = (knex) => {
 
   router.get('/data', (req, res) => {
+    console.log(req.session.user_name);
     res.send(data)
   })
 

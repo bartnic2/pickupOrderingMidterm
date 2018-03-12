@@ -37,7 +37,6 @@ module.exports = (knex) => {
   router.post("/charge", (req, res) => {
     console.log("charge is receiving");
     sendText.notifyRestaurant(req.body)
-    res.send('hello');
   })
 
   return router;
