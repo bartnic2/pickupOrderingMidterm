@@ -13,18 +13,18 @@ module.exports = (knex, randomString) => {
         console.log("Login req user name", req.session.user_name);
         res.send(`Hello, ${req.body.userName}`)
       } else {
-        res.send("invalid password")
+        res.send("Invalid password")
       }
     })
     .catch(function(err){
       console.log(err)
-      res.send("invalid username")
+      res.send("Invalid username")
     })
   });
 
   router.get("/login", (req, res) => {
     if(req.session.user_name){
-      res.send(`Welcome back, ${req.session.user_name}`);
+      res.send(`Welcome, ${req.session.user_name}`);
     }else{
       res.send("No User");
     }

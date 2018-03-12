@@ -56,16 +56,18 @@ router.get('/data', (req, res) => {
    }
    cooktime().then(function(result){
      //message to restaurant
-     data = pickupTime;
-     twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
      //message to customer
-     console.log("Current user on response", currentUser);
     dbFunctions.getAllCustomerData(currentUser).then(function(rows){
+       data = pickupTime;
+       twiml.message(`Thank you, customer will be by in ${pickupTime} minutes`);
        let phone = rows[0].phone_number;
        sendMessage.notifyOrderConfirmed(phone, pickupTime);
+       res.writeHead(200, {'Content-Type': 'text/xml'});
+       res.end(twiml.toString());
+    }).catch(function(err){
+      console.log(err);
     })
-     res.writeHead(200, {'Content-Type': 'text/xml'});
-     res.end(twiml.toString());
+
    })
    .catch(function(err){
      //message to restaurant

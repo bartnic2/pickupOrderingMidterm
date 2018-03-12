@@ -66,14 +66,17 @@ $(document).ready(function() {
   });
 
   document.getElementById('customButton').addEventListener('click', function(e) {
-    // Open Checkout with further options:
-    handler.open({
-      name: 'Demo Site',
-      description: '2 widgets',
-      currency: 'cad',
-      amount: total*100
-    });
-    e.preventDefault();
+    if(total !== 0){
+      // Open Checkout with further options:
+      handler.open({
+        name: 'Demo Site',
+        description: '2 widgets',
+        currency: 'cad',
+        amount: total*100
+      });
+      e.preventDefault();
+
+    }
 
   });
 

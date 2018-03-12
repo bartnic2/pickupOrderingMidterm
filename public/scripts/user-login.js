@@ -14,10 +14,10 @@ $(document).ready(function() {
     }
     event.preventDefault();
     $.post('/login', info).done(function(res){
-      if(res === "invalid password"){
+      if(res === "Invalid password"){
         $(".messages").text(res);
       }
-      else if (res === "invalid username"){
+      else if (res === "Invalid username"){
         $(".messages").text(res);
       }
       else{
@@ -53,7 +53,7 @@ $(document).ready(function() {
       });
     })
   })
-   $("#confirmation-window").slideUp(1000); 
+   $("#confirmation-window").slideUp(1000);
 
 
 

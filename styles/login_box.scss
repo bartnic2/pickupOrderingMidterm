@@ -11,12 +11,14 @@
 }
 
 .btn-register button{
-  margin-top: 15px;
-  margin-left: 167px;
+  position: fixed;
+  bottom: 65px;
+  right: 50px;
 }
 
 .logout {
   visibility: hidden;
-  position: relative;
-  top: 7px;
+  position: absolute;
+  top: 20px;
+  right: 25px;
 }

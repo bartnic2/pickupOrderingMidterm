@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cedarville+Cursive');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 $table-size: 75%;
 
 
@@ -19,17 +21,18 @@ $table-size: 75%;
   }
 }
 
-
 .p-2 {
   background-color: #EBECEE;
   font-style: italic;
   h5 {
     font-size: 2em;
-    padding-top: 85px;
+    padding-top: 45px;
+    font-family: 'Cedarville Cursive', cursive;
   }
   p {
     font-size: 1em;
-    padding-top: 40px;
+    padding-top: 17px;
+    font-family: 'Titillium Web', sans-serif;
   }
 }
 
@@ -50,7 +53,9 @@ button.btn.btn-default {
   > div {
     padding-bottom: 40px;
   }
-
+  h5:first-child {
+    font-family: sans-serif;
+  }
 }
 
 .no-border td {
