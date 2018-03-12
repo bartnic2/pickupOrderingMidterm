@@ -24,11 +24,22 @@ $(document).ready(function() {
       token['restaurant_email'] = $('.restaurant_email').text();
       token['restaurant_phone'] = $('.restaurant_phone').text();
 
-      $.post("/charge", token).done(function(res){
-        console.log(res);
-        $('#customButton').slideToggle();
-
-      })
+      $.post("/charge", token).done(function (res){})
+      let run = true;
+      let data = "empty";
+      while(data === "empty"){
+        if (run) {
+          setTimeout(getData(), 10000);
+          run = false;
+        }
+      }
+      function getData(){
+        $.get("/data").done(function(res){
+          data = res;
+          console.log(data)
+          run = true
+        })
+      }
     }
   });
 
