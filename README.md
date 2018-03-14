@@ -29,7 +29,7 @@ module.exports = {
   twilioToken: 'a594493939cd939230943esf9304fef93808'
 }
 
-5. Under the 'Phone Numbers' section of your Twilio account, add a smart-phone number you wish to use for the customer. Click on this phone number, and you will enter a configuration page. Back in the terminal, start an ngrok session by typing: node_modules/.bin/ngrok http 8080 into the terminal. Then copy the first "forwarding" address, and in the configuration page, paste it into the section titled "Messaging", and under the subtitled "A message comes in (Webhook)". 
+5. Under the 'Phone Numbers' section of your Twilio account, add a smart-phone number you wish to use for the customer. Click on this phone number, and you will enter a configuration page. Back in the terminal, start an ngrok session by typing: node_modules/.bin/ngrok http 8080 into the terminal. Then copy the first "forwarding" address, and in the configuration page, paste it into the section titled "Messaging" under the subtitled "A message comes in (Webhook)" area. 
 
 6. Under the "Verified Caller IDs" section of your Twilio account, enter in a number of someone who will play as the restaurant. 
 
