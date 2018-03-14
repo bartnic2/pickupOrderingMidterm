@@ -8,7 +8,7 @@ Simulates a food ordering experience for multiple restaurants, using Twilio, a m
 ### Each restaurant's menu page:
 !["Menu Page for First Restaurant"](https://github.com/bartnic1/pickupOrderingMidterm/blob/master/menu.png)
 
-## Getting Started
+## Getting Started 
 
 1. From the terminal, clone the project into a local directory (i.e. git clone git@github.com:bartnic1/pickupOrderingMidterm.git pickupProject)
 2. Enter the directory and install the necessary packages by typing "npm install" into the terminal.
