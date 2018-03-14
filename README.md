@@ -21,6 +21,7 @@ DB_SSL=true
 DB_PORT=5432
 PUBLISHABLE_KEY=*
 SECRET_KEY=*
+
 Where * refers to the keys procured from setting up an account with Stripe (follow the instructions at https://stripe.com to set up a   trial account). This .env file should be present in the pre-existing "routes" *and* main directory folder.
 
 4. Create a Twilio account, and from the Dashboard, copy the "Auth Token" and place it into a file called "confidential.js" in the routes folder. It should have the following format:  
