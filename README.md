@@ -3,13 +3,10 @@ Simulates a food ordering experience for multiple restaurants, using Twilio, a m
 
 ## Final Product
 ### The home page, which serves multiple restaurants:
-!["Home page"](https://github.com/bartnic1/Battleship/blob/master/Battleship.png)
+!["Home page"](https://github.com/bartnic1/pickupOrderingMidterm/blob/master/main.png)
 
 ### Each restaurant's menu page:
-!["Menu Page for First Restaurant"](https://github.com/bartnic1/Battleship/blob/master/Battleship.png)
-
-### Placing an order with Stripe:
-!["Stripe order popup"](https://github.com/bartnic1/Battleship/blob/master/Battleship.png)
+!["Menu Page for First Restaurant"](https://github.com/bartnic1/pickupOrderingMidterm/blob/master/menu.png)
 
 ## Getting Started
 
